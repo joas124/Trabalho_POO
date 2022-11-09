@@ -1,10 +1,11 @@
 public class RestauranteFastFood extends Restaurante {
-    private float numMedioDiarioClientesDriveThru, valMedioFaturacaoClienteDriveThru;
+    private float numMedioDiarioClientesDriveThru;
+    private float valMedioFaturacaoClienteDriveThru;
 
     public RestauranteFastFood(){}
 
-    public RestauranteFastFood(int numEmpregadosMesa, float custoEmpregadosMesa, float numMedClientesDiario, float valMedioFaturacaoMesa, int numDiasFuncionamentoAno, int numMesasInteriores, float numMedioDiarioClientesDriveThru, float valMedioFaturacaoClienteDriveThru) {
-        super(numEmpregadosMesa, custoEmpregadosMesa, numMedClientesDiario, valMedioFaturacaoMesa, numDiasFuncionamentoAno, numMesasInteriores);
+    public RestauranteFastFood(String nome, String distrito, GPS localizacao, int numEmpregadosMesa, float numMedClientesDiario, float custoEmpregadosMesa, float custoSalarioMedioAnual, float valMedioFaturacaoMesaDia, int numDiasFuncionamentoAno, int numMesasInteriores, float numMedioDiarioClientesDriveThru, float valMedioFaturacaoClienteDriveThru) {
+        super("Restaurante Fast-food", nome, distrito, localizacao, numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual, valMedioFaturacaoMesaDia, numDiasFuncionamentoAno, numMesasInteriores);
         this.numMedioDiarioClientesDriveThru = numMedioDiarioClientesDriveThru;
         this.valMedioFaturacaoClienteDriveThru = valMedioFaturacaoClienteDriveThru;
     }
@@ -26,10 +27,19 @@ public class RestauranteFastFood extends Restaurante {
     }
 
     @Override
+    public float defReceitaAnual() {
+        return (numMesasInteriores * valMedioFaturacaoMesaDia + numMedioDiarioClientesDriveThru * valMedioFaturacaoClienteDriveThru) * numDiasFuncionamentoAno;
+    }
+
+    @Override
+    public boolean lucro() {
+        return (defReceitaAnual() - defDespesaAnual()) > 0;
+    }
+
+    @Override
     public String toString() {
-        return "RestauranteFastFood{" +
-                "numMedioDiarioClientesDriveThru=" + numMedioDiarioClientesDriveThru +
-                ", valMedioFaturacaoClienteDriveThru=" + valMedioFaturacaoClienteDriveThru +
-                '}';
+        return super.toString() +
+                "\t•Número médio diario de clientes drive-thru = " + numMedioDiarioClientesDriveThru + '\n' +
+                "\t•Valor médio de faturação por cliente drive-thru = " + valMedioFaturacaoClienteDriveThru + "€\n";
     }
 }

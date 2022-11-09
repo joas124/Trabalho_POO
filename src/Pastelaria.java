@@ -4,8 +4,8 @@ public class Pastelaria extends Restauracao {
 
     public Pastelaria(){}
 
-    public Pastelaria(int numEmpregadosMesa, float custoEmpregadosMesa, float numMedClientesDiario, float numMedBolosVendidosDia, float valMedFaturacaoAnualBoloVendidoDia) {
-        super(numEmpregadosMesa, custoEmpregadosMesa, numMedClientesDiario);
+    public Pastelaria(String nome, String distrito, GPS localizacao, int numEmpregadosMesa, float numMedClientesDiario, float custoEmpregadosMesa, float custoSalarioMedioAnual, float numMedBolosVendidosDia, float valMedFaturacaoAnualBoloVendidoDia) {
+        super("Pastelaria", nome, distrito, localizacao, numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual);
         this.numMedBolosVendidosDia = numMedBolosVendidosDia;
         this.valMedFaturacaoAnualBoloVendidoDia = valMedFaturacaoAnualBoloVendidoDia;
     }
@@ -27,10 +27,19 @@ public class Pastelaria extends Restauracao {
     }
 
     @Override
+    public float defReceitaAnual() {
+        return numMedBolosVendidosDia * valMedFaturacaoAnualBoloVendidoDia;
+    }
+
+    @Override
+    public boolean lucro() {
+        return (defReceitaAnual() - defDespesaAnual()) > 0;
+    }
+
+    @Override
     public String toString() {
-        return "Pastelaria{" +
-                "numMedBolosVendidosDia=" + numMedBolosVendidosDia +
-                ", valMedFaturacaoAnualBoloVendidoDia=" + valMedFaturacaoAnualBoloVendidoDia +
-                "} " + super.toString();
+        return super.toString() +
+                "\t•Numero medio de bolos vendidos por dia = " + numMedBolosVendidosDia + '\n' +
+                "\t•Valor medio de faturacao anual de bolos vendidos por dia = " + valMedFaturacaoAnualBoloVendidoDia + "€\n";
     }
 }

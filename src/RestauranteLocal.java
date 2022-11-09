@@ -1,12 +1,48 @@
 public class RestauranteLocal extends Restaurante {
-    protected int numMesasInteriores, numMesasEsplanada;
-    protected float custoLicencaAnualMesaEsplanada, valorMedioFaturacaoMesaDia;
+    private int numMesasEsplanada;
+    private float custoLicencaAnualMesaEsplanada;
 
-    public RestauranteLocal(int numEmpregadosMesa, float custoEmpregadosMesa, float numMedClientesDiario, float valMedioFaturacaoMesa, int numDiasFuncionamentoAno, int numMesasInteriores, int numMesasInteriores1, int numMesasEsplanada, float custoLicencaAnualMesaEsplanada, float valorMedioFaturacaoMesaDia) {
-        super(numEmpregadosMesa, custoEmpregadosMesa, numMedClientesDiario, valMedioFaturacaoMesa, numDiasFuncionamentoAno, numMesasInteriores);
-        this.numMesasInteriores = numMesasInteriores1;
+    public RestauranteLocal(String nome, String distrito, GPS localizacao, int numEmpregadosMesa, float numMedClientesDiario, float custoEmpregadosMesa, float custoSalarioMedioAnual, float valMedioFaturacaoMesaDia, int numDiasFuncionamentoAno, int numMesasInteriores, int numMesasEsplanada, float custoLicencaAnualMesaEsplanada) {
+        super("Restaurante Local", nome, distrito, localizacao, numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual, valMedioFaturacaoMesaDia, numDiasFuncionamentoAno, numMesasInteriores);
         this.numMesasEsplanada = numMesasEsplanada;
         this.custoLicencaAnualMesaEsplanada = custoLicencaAnualMesaEsplanada;
-        this.valorMedioFaturacaoMesaDia = valorMedioFaturacaoMesaDia;
+    }
+
+    public int getNumMesasEsplanada() {
+        return numMesasEsplanada;
+    }
+
+    public void setNumMesasEsplanada(int numMesasEsplanada) {
+        this.numMesasEsplanada = numMesasEsplanada;
+    }
+
+    public float getCustoLicencaAnualMesaEsplanada() {
+        return custoLicencaAnualMesaEsplanada;
+    }
+
+    public void setCustoLicencaAnualMesaEsplanada(float custoLicencaAnualMesaEsplanada) {
+        this.custoLicencaAnualMesaEsplanada = custoLicencaAnualMesaEsplanada;
+    }
+
+    @Override
+    public float defDespesaAnual() {
+        return (numEmpregadosMesa * custoSalarioMedioAnual) + (numMesasEsplanada * custoLicencaAnualMesaEsplanada);
+    }
+
+    @Override
+    public float defReceitaAnual() {
+        return (numMesasInteriores + numMesasEsplanada) * valMedioFaturacaoMesaDia * numDiasFuncionamentoAno;
+    }
+
+    @Override
+    public boolean lucro() {
+        return (defReceitaAnual() - defDespesaAnual()) > 0;
+    }
+
+    @Override
+    public String toString() {
+        return  super.toString() +
+                "\t•Numero de mesas da esplanada = " + numMesasEsplanada + "\n" +
+                "\t•Custo da licenca anual por mesa da esplanada = " + custoLicencaAnualMesaEsplanada + "€\n";
     }
 }
