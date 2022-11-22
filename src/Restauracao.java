@@ -124,4 +124,8 @@ public abstract class Restauracao extends Empresa{
                 "\t•Salario mensal de cada empregado de mesa = " + custoEmpregadosMesa + "€\n" +
                 "\t•Salario anual de cada empregado de mesa = " + custoSalarioMedioAnual + "€\n";
     }
+    @Override
+    public String toStringFicheiro(){
+        return super.toStringFicheiro() + numEmpregadosMesa + ',' + custoEmpregadosMesa + ',' + custoSalarioMedioAnual + ',';
+    }
 }

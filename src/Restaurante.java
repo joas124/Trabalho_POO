@@ -5,9 +5,9 @@ public abstract class Restaurante extends Restauracao {
 
     public Restaurante(){}
 
-    public Restaurante(String categoria, String nome, String distrito, GPS localizacao, int numEmpregadosMesa, float numMedClientesDiario, float custoEmpregadosMesa, float custoSalarioMedioAnual, float valMedioFaturacaoMesa, int numDiasFuncionamentoAno, int numMesasInteriores) {
+    public Restaurante(String categoria, String nome, String distrito, GPS localizacao, int numEmpregadosMesa, float numMedClientesDiario, float custoEmpregadosMesa, float custoSalarioMedioAnual, float valMedioFaturacaoMesaDia, int numDiasFuncionamentoAno, int numMesasInteriores) {
         super(categoria, nome, distrito, localizacao, numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual);
-        this.valMedioFaturacaoMesaDia = valMedioFaturacaoMesa;
+        this.valMedioFaturacaoMesaDia = valMedioFaturacaoMesaDia;
         this.numDiasFuncionamentoAno = numDiasFuncionamentoAno;
         this.numMesasInteriores = numMesasInteriores;
     }
@@ -42,5 +42,10 @@ public abstract class Restaurante extends Restauracao {
                 "\t•Valor médio de faturação por mesa = " + valMedioFaturacaoMesaDia + "€\n" +
                 "\t•Número de dias de funcionamento por ano =" + numDiasFuncionamentoAno + '\n' +
                 "\t•Número de mesas interiores = " + numMesasInteriores + '\n';
+    }
+
+    @Override
+    public String toStringFicheiro() {
+        return super.toStringFicheiro() + ',' + valMedioFaturacaoMesaDia + ',' + numDiasFuncionamentoAno + ',' + numMesasInteriores + ',';
     }
 }

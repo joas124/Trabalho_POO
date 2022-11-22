@@ -42,4 +42,9 @@ public class Pastelaria extends Restauracao {
                 "\t•Numero medio de bolos vendidos por dia = " + numMedBolosVendidosDia + '\n' +
                 "\t•Valor medio de faturacao anual de bolos vendidos por dia = " + valMedFaturacaoAnualBoloVendidoDia + "€\n";
     }
+
+    @Override
+    public String toStringFicheiro() {
+        return '2' + super.toStringFicheiro() + numMedBolosVendidosDia + ',' + valMedFaturacaoAnualBoloVendidoDia;
+    }
 }

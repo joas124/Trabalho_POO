@@ -42,4 +42,9 @@ public class RestauranteFastFood extends Restaurante {
                 "\t•Número médio diario de clientes drive-thru = " + numMedioDiarioClientesDriveThru + '\n' +
                 "\t•Valor médio de faturação por cliente drive-thru = " + valMedioFaturacaoClienteDriveThru + "€\n";
     }
+
+    @Override
+    public String toStringFicheiro() {
+        return '4' + super.toStringFicheiro() + numMedioDiarioClientesDriveThru + ',' + valMedioFaturacaoClienteDriveThru;
+    }
 }

@@ -42,4 +42,9 @@ public class Cafe extends Restauracao {
                 "\t•Numero medio de cafes vendidos por dia = " + numMedCafesVendidosDia + '\n' +
                 "\t•Valor medio de faturacao anual de cafes vendidos dia = " + valMedFaturacaoAnualCafeVendidoDia + "€\n";
     }
+
+    @Override
+    public String toStringFicheiro() {
+        return '1' + super.toStringFicheiro() + numMedCafesVendidosDia + ',' + valMedFaturacaoAnualCafeVendidoDia;
+    }
 }

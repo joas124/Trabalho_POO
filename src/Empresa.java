@@ -134,4 +134,7 @@ public abstract class Empresa {
                 "\t•Receita Anual = " + defReceitaAnual() + "€\n" +
                 "\t•Lucro = " + lucro() +"\n";
     }
+    public String toStringFicheiro(){
+        return ',' + nome + ',' + distrito + ',' + localizacao + ',';
+    }
 }

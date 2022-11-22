@@ -26,4 +26,9 @@ public abstract class Mercearia extends Empresa{
         return super.toString() +
                 "\t•Custo anual de limpeza do estabelecimento = " + custoAnualLimpezaEstabelecimento + "€\n";
     }
+
+    @Override
+    public String toStringFicheiro() {
+        return super.toStringFicheiro() + custoAnualLimpezaEstabelecimento + ',';
+    }
 }
