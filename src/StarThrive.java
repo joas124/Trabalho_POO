@@ -20,13 +20,12 @@ public class StarThrive {
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
             String[] l = br.readLine().split(",");
-            //TODO: COORDENADAS GPS NÃO SÃO PASSADAS BEM
             switch (Integer.parseInt(l[0])){
                 case 1:
                     //empresas.add(new Cafe(l[0]))
                     break;
                 case 6:
-                    empresas.add(new Mercado(l[1], l[2], new GPS(Float.parseFloat(l[3]),Float.parseFloat(l[4])), Float.parseFloat(l[5]), l[6], Float.parseFloat(l[7]), Float.parseFloat(l[8])));
+                    empresas.add(new Mercado(l[1], l[2], new GPS(Double.parseDouble(l[3]),Double.parseDouble(l[4])), Float.parseFloat(l[5]), l[6], Float.parseFloat(l[7]), Float.parseFloat(l[8])));
                     break;
             }
         } catch (FileNotFoundException e) {
