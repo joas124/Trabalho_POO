@@ -120,7 +120,7 @@ public abstract class Empresa implements Serializable {
      * @return <i>True</i> caso a empresa tenha tido lucro, <i>False</i> caso contrário
      */
     public abstract boolean lucro();
-
+    public abstract double capacidadeRestauracao();
     /**
      * Método para converter a classe Empresa em String
      * @return String com as características da empresa

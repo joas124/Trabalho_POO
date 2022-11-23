@@ -22,6 +22,11 @@ public abstract class Mercearia extends Empresa{
     }
 
     @Override
+    public double capacidadeRestauracao() {
+        return 0;
+    }
+
+    @Override
     public String toString() {
         return super.toString() +
                 "\t•Custo anual de limpeza do estabelecimento = " + custoAnualLimpezaEstabelecimento + "€\n";

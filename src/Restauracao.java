@@ -112,6 +112,11 @@ public abstract class Restauracao extends Empresa{
         return numEmpregadosMesa * custoSalarioMedioAnual;
     }
 
+    @Override
+    public double capacidadeRestauracao() {
+        return numMedClientesDiario;
+    }
+
     /**
      * Metodo para converter a classe Restauracao em String
      * @return String com o número medio de empregados de mesa, o seu salário mensal e anual.
@@ -120,6 +125,7 @@ public abstract class Restauracao extends Empresa{
     @Override
     public String toString() {
         return  super.toString() +
+                "\t•Numero medio de clientes por dia = " + numMedClientesDiario + '\n' +
                 "\t•Numero de empregados de mesa = " + numEmpregadosMesa + '\n'+
                 "\t•Salario mensal de cada empregado de mesa = " + custoEmpregadosMesa + "€\n" +
                 "\t•Salario anual de cada empregado de mesa = " + custoSalarioMedioAnual + "€\n";
