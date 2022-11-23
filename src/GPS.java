@@ -1,7 +1,9 @@
+import java.io.Serializable;
+
 /**
  * Classe para guardar as coordenadas GPS
  */
-public class GPS {
+public class GPS implements Serializable {
     /**
      * Coordenadas GPS (Latitude e Longitude)
      */

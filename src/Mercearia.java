@@ -1,23 +1,23 @@
 public abstract class Mercearia extends Empresa{
-    protected float custoAnualLimpezaEstabelecimento;
+    protected double custoAnualLimpezaEstabelecimento;
 
     public Mercearia(){}
 
-    public Mercearia(String categoria, String nome, String distrito, GPS localizacao, float custoAnualLimpezaEstabelecimento) {
+    public Mercearia(String categoria, String nome, String distrito, GPS localizacao, double custoAnualLimpezaEstabelecimento) {
         super(categoria, nome, distrito, localizacao);
         this.custoAnualLimpezaEstabelecimento = custoAnualLimpezaEstabelecimento;
     }
 
-    public float getCustoAnualLimpezaEstabelecimento(){
+    public double getCustoAnualLimpezaEstabelecimento(){
         return custoAnualLimpezaEstabelecimento;
     }
 
-    public void setCustoAnualLimpezaEstabelecimento(float custoAnualLimpezaEstabelecimento) {
+    public void setCustoAnualLimpezaEstabelecimento(double custoAnualLimpezaEstabelecimento) {
         this.custoAnualLimpezaEstabelecimento = custoAnualLimpezaEstabelecimento;
     }
 
     @Override
-    public float defDespesaAnual() {
+    public double defDespesaAnual() {
         return custoAnualLimpezaEstabelecimento;
     }
 

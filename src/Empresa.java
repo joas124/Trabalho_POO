@@ -1,7 +1,9 @@
+import java.io.Serializable;
+
 /**
  * Classe para a gestão de uma Empresa
  */
-public abstract class Empresa {
+public abstract class Empresa implements Serializable {
     /**
      * Categoria da empresa (Mercearia/Restauração)
      */
@@ -105,13 +107,13 @@ public abstract class Empresa {
      * Método para calcular a despesa anual da empresa
      * @return Float com o cálculo da despesa anual da empresa
      */
-    public abstract float defDespesaAnual();
+    public abstract double defDespesaAnual();
 
     /**
      * Método para calcular a receita anual da empresa
      * @return Float com o cálculo da receita anual da empresa
      */
-    public abstract float defReceitaAnual();
+    public abstract double defReceitaAnual();
 
     /**
      * Método para verificar se a empresa teve lucro ou não

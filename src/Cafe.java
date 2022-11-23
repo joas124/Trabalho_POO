@@ -1,33 +1,33 @@
 public class Cafe extends Restauracao {
-    private float numMedCafesVendidosDia;
-    private float valMedFaturacaoAnualCafeVendidoDia;
+    private double numMedCafesVendidosDia;
+    private double valMedFaturacaoAnualCafeVendidoDia;
 
     public Cafe(){}
 
-    public Cafe(String nome, String distrito, GPS localizacao, int numEmpregadosMesa, float numMedClientesDiario, float custoEmpregadosMesa, float custoSalarioMedioAnual, float numMedCafesVendidosDia, float valMedFaturacaoAnualCafeVendidoDia) {
+    public Cafe(String nome, String distrito, GPS localizacao, int numEmpregadosMesa, double numMedClientesDiario, double custoEmpregadosMesa, double custoSalarioMedioAnual, double numMedCafesVendidosDia, double valMedFaturacaoAnualCafeVendidoDia) {
         super("Café", nome, distrito, localizacao, numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual);
         this.numMedCafesVendidosDia = numMedCafesVendidosDia;
         this.valMedFaturacaoAnualCafeVendidoDia = valMedFaturacaoAnualCafeVendidoDia;
     }
 
-    public float getNumMedCafesVendidosDia() {
+    public double getNumMedCafesVendidosDia() {
         return numMedCafesVendidosDia;
     }
 
-    public void setNumMedCafesVendidosDia(float numMedCafesVendidosDia) {
+    public void setNumMedCafesVendidosDia(double numMedCafesVendidosDia) {
         this.numMedCafesVendidosDia = numMedCafesVendidosDia;
     }
 
-    public float getValMedFaturacaoAnualCafeVendidoDia() {
+    public double getValMedFaturacaoAnualCafeVendidoDia() {
         return valMedFaturacaoAnualCafeVendidoDia;
     }
 
-    public void setValMedFaturacaoAnualCafeVendidoDia(float valMedFaturacaoAnualCafeVendidoDia) {
+    public void setValMedFaturacaoAnualCafeVendidoDia(double valMedFaturacaoAnualCafeVendidoDia) {
         this.valMedFaturacaoAnualCafeVendidoDia = valMedFaturacaoAnualCafeVendidoDia;
     }
 
     @Override
-    public float defReceitaAnual() {
+    public double defReceitaAnual() {
         return numMedCafesVendidosDia * valMedFaturacaoAnualCafeVendidoDia;
     }
 

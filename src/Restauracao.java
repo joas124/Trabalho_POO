@@ -9,15 +9,15 @@ public abstract class Restauracao extends Empresa{
     /**
      * Número médio de clientes por dia
      */
-    protected float numMedClientesDiario;
+    protected double numMedClientesDiario;
     /**
      * Custo dos empregados de mesa
      */
-    protected float custoEmpregadosMesa;
+    protected double custoEmpregadosMesa;
     /**
      * Custo do salário médio anual
      */
-    protected float custoSalarioMedioAnual;
+    protected double custoSalarioMedioAnual;
 
     /**
      * Construtor default para a classe Restauracao
@@ -35,7 +35,7 @@ public abstract class Restauracao extends Empresa{
      * @param custoEmpregadosMesa despesa da empresa associada aos custos dos empregados de mesa
      * @param custoSalarioMedioAnual despesa da empresa associada aos salarios medios anuais dos empregados de mesa
      */
-    public Restauracao(String categoria, String nome, String distrito, GPS localizacao, int numEmpregadosMesa, float numMedClientesDiario, float custoEmpregadosMesa, float custoSalarioMedioAnual) {
+    public Restauracao(String categoria, String nome, String distrito, GPS localizacao, int numEmpregadosMesa, double numMedClientesDiario, double custoEmpregadosMesa, double custoSalarioMedioAnual) {
         super(categoria, nome, distrito, localizacao);
         this.numEmpregadosMesa = numEmpregadosMesa;
         this.numMedClientesDiario = numMedClientesDiario;
@@ -61,54 +61,54 @@ public abstract class Restauracao extends Empresa{
 
     /**
      * Metodo para obter o custo dos empregados de mesa
-     * @return float com o custo dos empregados de mesa
+     * @return double com o custo dos empregados de mesa
      */
-    public float getCustoEmpregadosMesa() {
+    public double getCustoEmpregadosMesa() {
         return custoEmpregadosMesa;
     }
 
     /**
      * Metodo para definir o custo dos empregados de mesa
-     * @param custoEmpregadosMesa float com o custo dos empregados de mesa
+     * @param custoEmpregadosMesa double com o custo dos empregados de mesa
      */
-    public void setCustoEmpregadosMesa(float custoEmpregadosMesa) {
+    public void setCustoEmpregadosMesa(double custoEmpregadosMesa) {
         this.custoEmpregadosMesa = custoEmpregadosMesa;
     }
 
     /**
      * Metodo para obter o valor do salario medios anual de um empregado de mesa
-     * @return float com o valor do salário medio anual de um empregado de mesa
+     * @return double com o valor do salário medio anual de um empregado de mesa
      */
-    public float getCustoSalarioMedioAnual() {
+    public double getCustoSalarioMedioAnual() {
         return custoSalarioMedioAnual;
     }
 
     /**
      * Metodo para definir o valor dos salarios medios anuais dos empregados de mesa
-     * @param custoSalarioMedioAnual float com o valor dos salarios medios anuais dos empregados de mesa
+     * @param custoSalarioMedioAnual double com o valor dos salarios medios anuais dos empregados de mesa
      */
-    public void setCustoSalarioMedioAnual(float custoSalarioMedioAnual) {
+    public void setCustoSalarioMedioAnual(double custoSalarioMedioAnual) {
         this.custoSalarioMedioAnual = custoSalarioMedioAnual;
     }
 
     /**
      * Metodo para obter o numero medio de clientes diario
-     * @return float com o numero medio de clientes diario
+     * @return double com o numero medio de clientes diario
      */
-    public float getNumMedClientesDiario() {
+    public double getNumMedClientesDiario() {
         return numMedClientesDiario;
     }
 
     /**
      * Metodo para definir o numero medio de clientes diario
-     * @param numMedClientesDiario float com o numero medio de clientes diario
+     * @param numMedClientesDiario double com o numero medio de clientes diario
      */
-    public void setNumMedClientesDiario(float numMedClientesDiario) {
+    public void setNumMedClientesDiario(double numMedClientesDiario) {
         this.numMedClientesDiario = numMedClientesDiario;
     }
 
     @Override
-    public float defDespesaAnual() {
+    public double defDespesaAnual() {
         return numEmpregadosMesa * custoSalarioMedioAnual;
     }
 

@@ -1,22 +1,22 @@
 public abstract class Restaurante extends Restauracao {
-    protected float valMedioFaturacaoMesaDia;
+    protected double valMedioFaturacaoMesaDia;
     protected int numDiasFuncionamentoAno;
     protected int numMesasInteriores;
 
     public Restaurante(){}
 
-    public Restaurante(String categoria, String nome, String distrito, GPS localizacao, int numEmpregadosMesa, float numMedClientesDiario, float custoEmpregadosMesa, float custoSalarioMedioAnual, float valMedioFaturacaoMesaDia, int numDiasFuncionamentoAno, int numMesasInteriores) {
+    public Restaurante(String categoria, String nome, String distrito, GPS localizacao, int numEmpregadosMesa, double numMedClientesDiario, double custoEmpregadosMesa, double custoSalarioMedioAnual, double valMedioFaturacaoMesaDia, int numDiasFuncionamentoAno, int numMesasInteriores) {
         super(categoria, nome, distrito, localizacao, numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual);
         this.valMedioFaturacaoMesaDia = valMedioFaturacaoMesaDia;
         this.numDiasFuncionamentoAno = numDiasFuncionamentoAno;
         this.numMesasInteriores = numMesasInteriores;
     }
 
-    public float getValMedioFaturacaoMesa() {
+    public double getValMedioFaturacaoMesa() {
         return valMedioFaturacaoMesaDia;
     }
 
-    public void setValMedioFaturacaoMesa(float valMedioFaturacaoMesa) {
+    public void setValMedioFaturacaoMesa(double valMedioFaturacaoMesa) {
         this.valMedioFaturacaoMesaDia = valMedioFaturacaoMesa;
     }
 

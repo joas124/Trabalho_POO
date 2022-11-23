@@ -1,10 +1,10 @@
 public class Frutaria extends Mercearia {
     private int numProdutos;
-    private float valMedFaturacaoAnualProduto;
+    private double valMedFaturacaoAnualProduto;
 
     public Frutaria(){}
 
-    public Frutaria(String nome, String distrito, GPS localizacao, float custoAnualLimpezaEstabelecimento, int numProdutos, float valMedFaturacaoAnualProduto) {
+    public Frutaria(String nome, String distrito, GPS localizacao, double custoAnualLimpezaEstabelecimento, int numProdutos, double valMedFaturacaoAnualProduto) {
         super("Frutaria", nome, distrito, localizacao, custoAnualLimpezaEstabelecimento);
         this.numProdutos = numProdutos;
         this.valMedFaturacaoAnualProduto = valMedFaturacaoAnualProduto;
@@ -18,16 +18,16 @@ public class Frutaria extends Mercearia {
         this.numProdutos = numProdutos;
     }
 
-    public float getValMedFaturacaoAnualProduto() {
+    public double getValMedFaturacaoAnualProduto() {
         return valMedFaturacaoAnualProduto;
     }
 
-    public void setValMedFaturacaoAnualProduto(float valMedFaturacaoAnualProduto) {
+    public void setValMedFaturacaoAnualProduto(double valMedFaturacaoAnualProduto) {
         this.valMedFaturacaoAnualProduto = valMedFaturacaoAnualProduto;
     }
 
     @Override
-    public float defReceitaAnual() {
+    public double defReceitaAnual() {
         return numProdutos * valMedFaturacaoAnualProduto;
     }
 

@@ -1,33 +1,33 @@
 public class Pastelaria extends Restauracao {
-    private float numMedBolosVendidosDia;
-    private float valMedFaturacaoAnualBoloVendidoDia;
+    private double numMedBolosVendidosDia;
+    private double valMedFaturacaoAnualBoloVendidoDia;
 
     public Pastelaria(){}
 
-    public Pastelaria(String nome, String distrito, GPS localizacao, int numEmpregadosMesa, float numMedClientesDiario, float custoEmpregadosMesa, float custoSalarioMedioAnual, float numMedBolosVendidosDia, float valMedFaturacaoAnualBoloVendidoDia) {
+    public Pastelaria(String nome, String distrito, GPS localizacao, int numEmpregadosMesa, double numMedClientesDiario, double custoEmpregadosMesa, double custoSalarioMedioAnual, double numMedBolosVendidosDia, double valMedFaturacaoAnualBoloVendidoDia) {
         super("Pastelaria", nome, distrito, localizacao, numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual);
         this.numMedBolosVendidosDia = numMedBolosVendidosDia;
         this.valMedFaturacaoAnualBoloVendidoDia = valMedFaturacaoAnualBoloVendidoDia;
     }
 
-    public float getNumMedBolosVendidosDia() {
+    public double getNumMedBolosVendidosDia() {
         return numMedBolosVendidosDia;
     }
 
-    public void setNumMedBolosVendidosDia(float numMedBolosVendidosDia) {
+    public void setNumMedBolosVendidosDia(double numMedBolosVendidosDia) {
         this.numMedBolosVendidosDia = numMedBolosVendidosDia;
     }
 
-    public float getValMedFaturacaoAnualBoloVendidoDia() {
+    public double getValMedFaturacaoAnualBoloVendidoDia() {
         return valMedFaturacaoAnualBoloVendidoDia;
     }
 
-    public void setValMedFaturacaoAnualBoloVendidoDia(float valMedFaturacaoAnualBoloVendidoDia) {
+    public void setValMedFaturacaoAnualBoloVendidoDia(double valMedFaturacaoAnualBoloVendidoDia) {
         this.valMedFaturacaoAnualBoloVendidoDia = valMedFaturacaoAnualBoloVendidoDia;
     }
 
     @Override
-    public float defReceitaAnual() {
+    public double defReceitaAnual() {
         return numMedBolosVendidosDia * valMedFaturacaoAnualBoloVendidoDia;
     }
 

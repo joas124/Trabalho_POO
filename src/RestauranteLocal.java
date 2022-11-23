@@ -1,8 +1,9 @@
 public class RestauranteLocal extends Restaurante {
     private int numMesasEsplanada;
-    private float custoLicencaAnualMesaEsplanada;
+    private double custoLicencaAnualMesaEsplanada;
+    public RestauranteLocal(){}
 
-    public RestauranteLocal(String nome, String distrito, GPS localizacao, int numEmpregadosMesa, float numMedClientesDiario, float custoEmpregadosMesa, float custoSalarioMedioAnual, float valMedioFaturacaoMesaDia, int numDiasFuncionamentoAno, int numMesasInteriores, int numMesasEsplanada, float custoLicencaAnualMesaEsplanada) {
+    public RestauranteLocal(String nome, String distrito, GPS localizacao, int numEmpregadosMesa, double numMedClientesDiario, double custoEmpregadosMesa, double custoSalarioMedioAnual, double valMedioFaturacaoMesaDia, int numDiasFuncionamentoAno, int numMesasInteriores, int numMesasEsplanada, double custoLicencaAnualMesaEsplanada) {
         super("Restaurante Local", nome, distrito, localizacao, numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual, valMedioFaturacaoMesaDia, numDiasFuncionamentoAno, numMesasInteriores);
         this.numMesasEsplanada = numMesasEsplanada;
         this.custoLicencaAnualMesaEsplanada = custoLicencaAnualMesaEsplanada;
@@ -16,21 +17,21 @@ public class RestauranteLocal extends Restaurante {
         this.numMesasEsplanada = numMesasEsplanada;
     }
 
-    public float getCustoLicencaAnualMesaEsplanada() {
+    public double getCustoLicencaAnualMesaEsplanada() {
         return custoLicencaAnualMesaEsplanada;
     }
 
-    public void setCustoLicencaAnualMesaEsplanada(float custoLicencaAnualMesaEsplanada) {
+    public void setCustoLicencaAnualMesaEsplanada(double custoLicencaAnualMesaEsplanada) {
         this.custoLicencaAnualMesaEsplanada = custoLicencaAnualMesaEsplanada;
     }
 
     @Override
-    public float defDespesaAnual() {
+    public double defDespesaAnual() {
         return (numEmpregadosMesa * custoSalarioMedioAnual) + (numMesasEsplanada * custoLicencaAnualMesaEsplanada);
     }
 
     @Override
-    public float defReceitaAnual() {
+    public double defReceitaAnual() {
         return (numMesasInteriores + numMesasEsplanada) * valMedioFaturacaoMesaDia * numDiasFuncionamentoAno;
     }
 
