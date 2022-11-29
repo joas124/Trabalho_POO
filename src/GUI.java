@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.TimerTask;
@@ -11,26 +12,27 @@ public class GUI extends JFrame {
 
     public GUI(StarThrive st){
         setTitle("StarThrive");
-        setSize(1200, 700);
+        setSize(1920, 1080);
+        setLayout(new GridLayout(2,1));
+        setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         painelPrincipal = new JPanel();
-        painelPrincipal.setSize(800, 800);
         add(painelPrincipal);
 
         valoresLista = new DefaultListModel<>();
         for (Empresa e: st.getEmpresas())
             valoresLista.addElement(e.nome);
-        //for (int i = 0; i<100; ++i) valoresLista.addElement(String.valueOf(i));
         lista = new JList<>(valoresLista);
+        DefaultListCellRenderer renderer = (DefaultListCellRenderer) lista.getCellRenderer();
+        renderer.setHorizontalAlignment(SwingConstants.CENTER);
+        lista.setFixedCellHeight(48);
+        lista.setFixedCellWidth(1000);
         listScroller = new JScrollPane(lista);
-        listScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        listScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
         painelPrincipal.add(listScroller);
 
-
-
-        //JButton jButton = new JButton("Click Me!");
-        //jButton.addMouseListener(new MouseAdapter() {
         lista.addMouseListener(new MouseAdapter() {
         private int eventCounter = 0;
         java.util.Timer timer = new java.util.Timer("doubleClickTimer", false);
@@ -43,7 +45,7 @@ public class GUI extends JFrame {
                     @Override
                     public void run() {
                         if ( eventCounter > 1 ) {
-                            JOptionPane.showMessageDialog(null, st.getEmpresa());
+                            JOptionPane.showMessageDialog(null, st.getEmpresa(lista.getSelectedIndex()));
                         }
                         eventCounter = 0;
                     }
