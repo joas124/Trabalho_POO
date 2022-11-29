@@ -44,8 +44,4 @@ public abstract class Restaurante extends Restauracao {
                 "\t•Número de mesas interiores = " + numMesasInteriores + '\n';
     }
 
-    @Override
-    public String toStringFicheiro() {
-        return super.toStringFicheiro() + ',' + valMedioFaturacaoMesaDia + ',' + numDiasFuncionamentoAno + ',' + numMesasInteriores + ',';
-    }
 }

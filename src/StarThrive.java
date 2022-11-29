@@ -71,6 +71,10 @@ public class StarThrive implements Serializable{
         }
     }
 
+    public Empresa getEmpresa(int index){
+        return empresas.get(index);
+    }
+
     public void escreverFicheiro(){
         File ficheiro = new File("starthrive.obj");
         try {

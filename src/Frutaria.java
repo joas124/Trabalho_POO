@@ -43,8 +43,4 @@ public class Frutaria extends Mercearia {
                 "\t•Valor médio de faturação anual por produto = " + valMedFaturacaoAnualProduto + "€\n";
     }
 
-    @Override
-    public String toStringFicheiro() {
-        return '5' + super.toStringFicheiro() + numProdutos + ',' + valMedFaturacaoAnualProduto;
-    }
 }

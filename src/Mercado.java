@@ -45,8 +45,4 @@ public class Mercado extends Mercearia {
                 "\t•Valor medio de faturacao anual por metro quadrado = " + valMedFaturacaoAnualMetro2 + "€\n";
     }
 
-    @Override
-    public String toStringFicheiro() {
-        return '6' + super.toStringFicheiro() + tipo + ',' + areaCorredores + ',' + valMedFaturacaoAnualMetro2;
-    }
 }

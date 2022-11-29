@@ -47,8 +47,4 @@ public class RestauranteLocal extends Restaurante {
                 "\t•Custo da licenca anual por mesa da esplanada = " + custoLicencaAnualMesaEsplanada + "€\n";
     }
 
-    @Override
-    public String toStringFicheiro() {
-        return '3' + super.toStringFicheiro() + numMesasEsplanada + ',' + custoLicencaAnualMesaEsplanada;
-    }
 }

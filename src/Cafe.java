@@ -43,8 +43,4 @@ public class Cafe extends Restauracao {
                 "\t•Valor medio de faturacao anual de cafes vendidos dia = " + valMedFaturacaoAnualCafeVendidoDia + "€\n";
     }
 
-    @Override
-    public String toStringFicheiro() {
-        return '1' + super.toStringFicheiro() + numMedCafesVendidosDia + ',' + valMedFaturacaoAnualCafeVendidoDia;
-    }
 }

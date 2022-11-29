@@ -136,7 +136,4 @@ public abstract class Empresa implements Serializable {
                 "\t•Receita Anual = " + defReceitaAnual() + "€\n" +
                 "\t•Lucro = " + lucro() +"\n";
     }
-    public String toStringFicheiro(){
-        return ',' + nome + ',' + distrito + ',' + localizacao + ',';
-    }
 }
