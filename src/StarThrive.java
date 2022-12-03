@@ -12,12 +12,7 @@ public class StarThrive implements Serializable{
         StarThrive st = new StarThrive();
         st.lerFicheiro();
         new GUI(st);
-        st.escreverFicheiro();
-        /*for(Empresa e: st.empresas)
-            System.out.println(e);
-        st.receitaDespesaLucro();
-        System.out.println();
-        st.maiorCapacidadeClientes();*/
+        st.escreverFicheiro(); // Meio desnecessário, tenho de ver isso melhor
     }
 
     public ArrayList<Empresa> getEmpresas() {
@@ -74,6 +69,12 @@ public class StarThrive implements Serializable{
     public Empresa getEmpresa(int index){
         return empresas.get(index);
     }
+    public void adicionarEmpresa(Empresa empresa){
+        empresas.add(empresa);
+    }
+    public void removerEmpresa(Empresa empresa){
+        empresas.remove(empresa);
+    }
 
     public void escreverFicheiro(){
         File ficheiro = new File("starthrive.obj");
@@ -92,8 +93,9 @@ public class StarThrive implements Serializable{
         }
     }
 
-    public void receitaDespesaLucro(){
+    public ArrayList<String> receitaDespesaLucro(){
         String[] categorias = {"Café", "Pastelaria", "Restaurante Local", "Restaurante Fast-food", "Frutaria", "Mercado"};
+        ArrayList<String> resultadoCategorias = new ArrayList<>();
         for(String c: categorias){
             double maiorReceita = 0, menorDespesa = Double.MAX_VALUE, maiorLucro = -menorDespesa;
             String nomeEmpresaReceita = null, nomeEmpresaDespesa = null, nomeEmpresaLucro = null;
@@ -110,12 +112,12 @@ public class StarThrive implements Serializable{
                 }
             }
             if (nomeEmpresaReceita != null && nomeEmpresaDespesa != null && nomeEmpresaLucro != null) {
-                System.out.println("Empresa da categoria " + c);
-                System.out.println("\tCom maior receita: " + nomeEmpresaReceita + ", " + maiorReceita + "€");
-                System.out.println("\tCom menor despesa: " + nomeEmpresaDespesa + ", " + menorDespesa + "€");
-                System.out.println("\tCom maior lucro: " + nomeEmpresaLucro + ", " + maiorLucro + "€\n");
+                String resultado = "Empresa da categoria: " + c + "\n\n\t•Com maior receita: " + nomeEmpresaReceita + ", " + maiorReceita + "€\n"
+                 + "\t•Com menor despesa: " + nomeEmpresaDespesa + ", " + menorDespesa + "€\n" + "\t•Com maior lucro: " + nomeEmpresaLucro + ", " + maiorLucro + "€\n";
+                resultadoCategorias.add(resultado);
             }
         }
+        return resultadoCategorias;
         /*-------------------------------------------------OUTRA MANEIRA-------------------------------------------------*/
         /*String[] categorias = {"Café", "Pastelaria", "Restaurante Local", "Restaurante Fast-food", "Frutaria", "Mercado"};
         for(String c: categorias){
@@ -142,7 +144,7 @@ public class StarThrive implements Serializable{
         }*/
     }
 
-    public void maiorCapacidadeClientes(){
+    public Empresa[] maiorCapacidadeClientes(){
         Empresa[] maiores = {new Cafe(), new Cafe()};
         for (Empresa e: empresas){
             if (e.capacidadeRestauracao() > 0){
@@ -154,6 +156,10 @@ public class StarThrive implements Serializable{
                 }
             }
         }
-        for (Empresa e: maiores) System.out.println(e);
+        if (maiores[0].capacidadeRestauracao() != 0 && maiores[1].capacidadeRestauracao() != 0) {
+            return maiores;
+        }else {
+            return null;
+        }
     }
 }
