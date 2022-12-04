@@ -25,7 +25,7 @@ public class GPS implements Serializable {
     }
 
     /**
-     * Método para obter a latitude da localizacao da empresa
+     * Metodo para obter a latitude da localizacao da empresa
      * @return double com a latitude da localizacao da empresa
      */
     public double getLatitude() {
@@ -58,7 +58,7 @@ public class GPS implements Serializable {
 
     /**
      * Metodo para converter a classe GPS em String
-     * @return String com as coodenadas GPS da Empresa
+     * @return String com as coordenadas GPS da Empresa
      */
     @Override
     public String toString() {

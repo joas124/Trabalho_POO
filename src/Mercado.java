@@ -1,9 +1,35 @@
+/**
+ * Classe para a gestao de um mercado
+ */
 public class Mercado extends Mercearia {
+    /**
+     * Tipo (Mini, Super, Hiper)
+     */
     private String tipo;
-    private double areaCorredores, valMedFaturacaoAnualMetro2;
+    /**
+     * Area dos corredores
+     */
+    private double areaCorredores;
+    /**
+     * Valor medio de faturacao anual por metro quadrado
+     */
+    private double valMedFaturacaoAnualMetro2;
 
+    /**
+     * Construtor default para a classe Mercado
+     */
     public Mercado(){}
 
+    /**
+     * Construtor para a classe Mercado
+     * @param nome String com o nome do mercado
+     * @param distrito String com o distrito onde o mercado esta localizado
+     * @param localizacao Objeto GPS com as coordenadas da localizacao do mercado
+     * @param custoAnualLimpezaEstabelecimento custo anual da limpeza do estabelecimento
+     * @param tipo String com o tipo do mercado (Mini, Super, Hiper)
+     * @param areaCorredores area dos corredores
+     * @param valMedFaturacaoAnualMetro2 valor medio de faturacao anual por metro quadrado
+     */
     public Mercado(String nome, String distrito, GPS localizacao, double custoAnualLimpezaEstabelecimento, String tipo, double areaCorredores, double valMedFaturacaoAnualMetro2) {
         super("Mercado", nome, distrito, localizacao, custoAnualLimpezaEstabelecimento);
         this.tipo = tipo;
@@ -11,32 +37,61 @@ public class Mercado extends Mercearia {
         this.valMedFaturacaoAnualMetro2 = valMedFaturacaoAnualMetro2;
     }
 
+    /**
+     * Metodo para obter o tipo do mercado
+     * @return String com o tipo do mercado (Mini, Super, Hiper)
+     */
     public String getTipo() {
         return tipo;
     }
 
+    /**
+     * Metodo para definir o tipo do mercado
+     * @param tipo String com o tipo do mercado (Mini, Super, Hiper)
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
+    /**
+     * Metodo para obter a area dos corredores
+     * @return double com a area dos corredores
+     */
     public double getAreaCorredores() {
         return areaCorredores;
     }
 
+    /**
+     * Metodo para definir a area dos corredores
+     * @param areaCorredores double com a area dos corredores
+     */
     public void setAreaCorredores(double areaCorredores) {
         this.areaCorredores = areaCorredores;
     }
 
+    /**
+     * Metodo que efetua o calculo da receita anual do mercado
+     * @return double com o valor da receita anual
+     */
     @Override
     public double defReceitaAnual() {
         return areaCorredores * valMedFaturacaoAnualMetro2;
     }
 
+    /**
+     * Metodo que efetua o calculo do lucro do mercado
+     * @return <i>True</i> caso o mercado obtenha lucro no final do ano, <i>False</i> caso obtenha prejuizo
+     */
     @Override
     public boolean lucro() {
         return (defReceitaAnual() - defDespesaAnual()) > 0;
     }
 
+    /**
+     * Metodo para converter a classe Mercado em String
+     * @return String com o tipo, area de corredores e valor medio
+     * de faturacao anual por metro quadrado de um mercado
+     */
     @Override
     public String toString() {
         return  super.toString() +
@@ -44,5 +99,4 @@ public class Mercado extends Mercearia {
                 "\t•Area de corredores = " + areaCorredores + "m²\n" +
                 "\t•Valor medio de faturacao anual por metro quadrado = " + valMedFaturacaoAnualMetro2 + "€\n";
     }
-
 }

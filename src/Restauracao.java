@@ -1,13 +1,13 @@
 /**
- * Classe para a gestão de uma empresa da área da Restauração
+ * Classe para a gestao de uma empresa da area da Restauracao
  */
 public abstract class Restauracao extends Empresa{
     /**
-     * Número de empregados de mesa
+     * Numero de empregados de mesa
      */
     protected int numEmpregadosMesa;
     /**
-     * Número médio de clientes por dia
+     * Numero medio de clientes por dia
      */
     protected double numMedClientesDiario;
     /**
@@ -15,7 +15,7 @@ public abstract class Restauracao extends Empresa{
      */
     protected double custoEmpregadosMesa;
     /**
-     * Custo do salário médio anual
+     * Custo do salario medio anual
      */
     protected double custoSalarioMedioAnual;
 
@@ -26,12 +26,12 @@ public abstract class Restauracao extends Empresa{
 
     /**
      * Construtor para a classe Restauracao
-     * @param categoria String com categoria da empresa (Mercearia/Restauração)
-     * @param nome String com o nome da empresa
-     * @param distrito String com o distrito onde a empresa está localizada
+     * @param categoria String com categoria da empresa (Cafe/Pastelaria)
+     * @param nome String com o nome da empresa de Restauracao
+     * @param distrito String com o distrito onde a empresa esta localizada
      * @param localizacao Objeto GPS com as coordenadas da localização da empresa
      * @param numEmpregadosMesa numero de empregados de mesa que trabalham na empresa
-     * @param numMedClientesDiario numero de clientes que frequentam a empresa diariamente
+     * @param numMedClientesDiario numero medio de clientes que frequentam a empresa diariamente
      * @param custoEmpregadosMesa despesa da empresa associada aos custos dos empregados de mesa
      * @param custoSalarioMedioAnual despesa da empresa associada aos salarios medios anuais dos empregados de mesa
      */
@@ -44,16 +44,16 @@ public abstract class Restauracao extends Empresa{
     }
 
     /**
-     * Metodo para obter o número de empregados de mesa que trabalham na empresa
-     * @return int com o número de empregados de mesa que trabalham na empresa
+     * Metodo para obter o numero de empregados de mesa que trabalham na empresa
+     * @return int com o numero de empregados de mesa que trabalham na empresa
      */
     public int getNumEmpregadosMesa() {
         return numEmpregadosMesa;
     }
 
     /**
-     * Metodo para definir o número de empregados de mesa que trabalham na empresa
-     * @param numEmpregadosMesa int com o número de empregados de mesa que trabalham na empresa
+     * Metodo para definir o numero de empregados de mesa que trabalham na empresa
+     * @param numEmpregadosMesa int com o numero de empregados de mesa que trabalham na empresa
      */
     public void setNumEmpregadosMesa(int numEmpregadosMesa) {
         this.numEmpregadosMesa = numEmpregadosMesa;
@@ -76,8 +76,8 @@ public abstract class Restauracao extends Empresa{
     }
 
     /**
-     * Metodo para obter o valor do salario medios anual de um empregado de mesa
-     * @return double com o valor do salário medio anual de um empregado de mesa
+     * Metodo para obter o valor do salario medio anual de um empregado de mesa
+     * @return double com o valor do salario medio anual de um empregado de mesa
      */
     public double getCustoSalarioMedioAnual() {
         return custoSalarioMedioAnual;
@@ -107,11 +107,19 @@ public abstract class Restauracao extends Empresa{
         this.numMedClientesDiario = numMedClientesDiario;
     }
 
+    /**
+     * Metodo que efetua o calculo da despesa anual
+     * @return double com o valor da despesa anual
+     */
     @Override
     public double defDespesaAnual() {
         return numEmpregadosMesa * custoSalarioMedioAnual;
     }
 
+    /**
+     * Metodo para obter a capacidade num servico de restauracao
+     * @return double com o numero medio de clientes diario
+     */
     @Override
     public double capacidadeRestauracao() {
         return numMedClientesDiario;
@@ -119,7 +127,8 @@ public abstract class Restauracao extends Empresa{
 
     /**
      * Metodo para converter a classe Restauracao em String
-     * @return String com o número medio de empregados de mesa, o seu salário mensal e anual.
+     * @return String com o numero medio de clientes por dia e o numero medio de empregados de mesa,
+     * o seu salário mensal e anual
      */
 
     @Override

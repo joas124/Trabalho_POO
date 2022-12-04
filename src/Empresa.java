@@ -30,8 +30,8 @@ public abstract class Empresa implements Serializable {
      * Construtor para a classe Empresa
      * @param categoria String com categoria da empresa (Mercearia/Restauração)
      * @param nome String com o nome da empresa
-     * @param distrito String com o distrito onde a empresa está localizada
-     * @param localizacao Objeto GPS com as coordenadas da localização da empresa
+     * @param distrito String com o distrito onde a empresa esta localizada
+     * @param localizacao Objeto GPS com as coordenadas da localizacao da empresa
      */
     public Empresa(String categoria, String nome, String distrito, GPS localizacao) {
         this.categoria = categoria;
@@ -41,7 +41,7 @@ public abstract class Empresa implements Serializable {
     }
 
     /**
-     * Método para obter a categoria da empresa
+     * Metodo para obter a categoria da empresa
      * @return String com a categoria da empresa
      */
     public String getCategoria() {
@@ -49,7 +49,7 @@ public abstract class Empresa implements Serializable {
     }
 
     /**
-     * Método para definir a categoria da empresa
+     * Metodo para definir a categoria da empresa
      * @param categoria String com a categoria da empresa
      */
     public void setCategoria(String categoria) {
@@ -57,7 +57,7 @@ public abstract class Empresa implements Serializable {
     }
 
     /**
-     * Método para obter o nome da empresa
+     * Metodo para obter o nome da empresa
      * @return String com o nome da empresa
      */
     public String getNome() {
@@ -65,7 +65,7 @@ public abstract class Empresa implements Serializable {
     }
 
     /**
-     * Método para definir o nome da empresa
+     * Metodo para definir o nome da empresa
      * @param nome String com o nome da empresa
      */
     public void setNome(String nome) {
@@ -73,7 +73,7 @@ public abstract class Empresa implements Serializable {
     }
 
     /**
-     * Método para obter o distrito da empresa
+     * Metodo para obter o distrito da empresa
      * @return String com o distrito da empresa
      */
     public String getDistrito() {
@@ -81,7 +81,7 @@ public abstract class Empresa implements Serializable {
     }
 
     /**
-     * Método para definir o distrito da empesa
+     * Metodo para definir o distrito da empesa
      * @param distrito String com o nome da empresa
      */
     public void setDistrito(String distrito) {
@@ -89,41 +89,41 @@ public abstract class Empresa implements Serializable {
     }
 
     /**
-     * Método para obter as coordenadas GPS da localização da empresa
-     * @return Objeto GPS com as coordenadas da localização da empresa
+     * Metodo para obter as coordenadas GPS da localizacao da empresa
+     * @return Objeto GPS com as coordenadas da localizacao da empresa
      */
     public GPS getLocalizacao() {
         return localizacao;
     }
     /**
-     * Método para obter as coordenadas GPS da localização da empresa
-     * @param localizacao Objeto GPS com as coordenadas da localização da empresa
+     * Metodo para obter as coordenadas GPS da localizacao da empresa
+     * @param localizacao Objeto GPS com as coordenadas da localizacao da empresa
      */
     public void setLocalizacao(GPS localizacao) {
         this.localizacao = localizacao;
     }
 
     /**
-     * Método para calcular a despesa anual da empresa
-     * @return Float com o cálculo da despesa anual da empresa
+     * Metodo para calcular a despesa anual da empresa
+     * @return Float com o calculo da despesa anual da empresa
      */
     public abstract double defDespesaAnual();
 
     /**
-     * Método para calcular a receita anual da empresa
-     * @return Float com o cálculo da receita anual da empresa
+     * Metodo para calcular a receita anual da empresa
+     * @return Float com o calculo da receita anual da empresa
      */
     public abstract double defReceitaAnual();
 
     /**
-     * Método para verificar se a empresa teve lucro ou não
+     * Metodo para verificar se a empresa teve lucro ou não
      * @return <i>True</i> caso a empresa tenha tido lucro, <i>False</i> caso contrário
      */
     public abstract boolean lucro();
     public abstract double capacidadeRestauracao();
     /**
      * Método para converter a classe Empresa em String
-     * @return String com as características da empresa
+     * @return String com as caracteristicas da empresa
      */
     @Override
     public String toString() {
