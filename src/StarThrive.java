@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ public class StarThrive implements Serializable{
     }
 
     public void lerFicheiro(){
-        File f = new File("starthrive.obj");
+        File f = new File("starthrive.dat");
         if(f.isFile() && f.exists()) {
             try{
                 FileInputStream fIS = new FileInputStream(f);
@@ -31,15 +32,15 @@ public class StarThrive implements Serializable{
                 fIS.close();
                 oIS.close();
             } catch (FileNotFoundException ex){
-                System.out.println("Ficheiro inexistente!");
+                JOptionPane.showMessageDialog(null, "Ficheiro inexistente!", "Erro", JOptionPane.ERROR_MESSAGE);
             } catch (IOException ex){
-                System.out.println("Erro ao ler o ficheiro.");
+                JOptionPane.showMessageDialog(null, "Erro ao ler o ficheiro.", "Erro", JOptionPane.ERROR_MESSAGE);
             } catch (ClassNotFoundException ex){
-                System.out.println("Erro ao converter o objeto.");
+                JOptionPane.showMessageDialog(null, "Erro ao converter o objeto.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
-        } else{
+        } else {
             f = new File("starthrive.txt");
-            if(f.exists() && f.isFile()) {
+            if (f.exists() && f.isFile()) {
                 try {
                     FileReader fr = new FileReader(f);
                     BufferedReader br = new BufferedReader(fr);
@@ -58,9 +59,12 @@ public class StarThrive implements Serializable{
                     fr.close();
                     br.close();
                 } catch (FileNotFoundException ex) {
-                    System.out.println("Ficheiro inexistente \"StarThrive.txt\"");
+                    JOptionPane.showMessageDialog(null, "Ficheiro inexistente \"starthrive.txt\"", "Erro", JOptionPane.ERROR_MESSAGE);
                 } catch (IOException ex) {
-                    System.out.println("Erro ao ler o ficheiro!");
+                    JOptionPane.showMessageDialog(null, "Erro ao ler o ficheiro!", "Erro", JOptionPane.ERROR_MESSAGE);
+                } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
+                    JOptionPane.showMessageDialog(null, "Ficheiro \"starthrive.txt\" mal formatado!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    empresas = new ArrayList<>();
                 }
             }
         }
@@ -77,13 +81,13 @@ public class StarThrive implements Serializable{
     }
 
     public void escreverFicheiro(){
-        File ficheiro = new File("starthrive.obj");
+        File ficheiro = new File("starthrive.dat");
         try {
             FileOutputStream fOS = new FileOutputStream(ficheiro);
             ObjectOutputStream oOS = new ObjectOutputStream(fOS);
 
             oOS.writeObject(empresas);
-
+            
             fOS.close();
             oOS.close();
         } catch (FileNotFoundException ex){

@@ -13,7 +13,7 @@ public class GUI extends JFrame {
     private JFrame frameAdicionar;
     private JScrollPane listScroller;
     private JComboBox<String> comboBoxTipo;
-    private JButton adicionar, remover, pontoDois, pontoTres, adicionarFinal, cancelar;
+    private JButton adicionar, remover, editar, pontoDois, pontoTres, adicionarFinal, cancelar;
     private JTextField nome, distrito, latitude, longitude;
     private JTextField numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual, numMedCafesVendidosDia, numMedBolosVendidosDia, valMedFaturacaoAnualBoloVendidoDia, valMedFaturacaoAnualCafeVendidoDia;
     private JTextField valMedioFaturacaoMesaDia, numDiasFuncionamentoAno, numMesasInteriores, numMesasEsplanada, custoLicencaAnualMesaEsplanada, numMedioDiarioClientesDriveThru, valMedioFaturacaoClienteDriveThru;
@@ -45,18 +45,21 @@ public class GUI extends JFrame {
         painelEmpresas.add(listScroller);
 
         painelBotoes = new JPanel();
-        painelBotoes.setLayout(new GridLayout(1, 4, 20, 60));
+        painelBotoes.setLayout(new GridLayout(1, 5, 20, 60));
         buttonListener = new ButtonListener();
         adicionar = new JButton("Adicionar Empresa");
         adicionar.addActionListener(buttonListener);
         remover = new JButton("Remover Empresa");
         remover.addActionListener(buttonListener);
+        editar = new JButton("Editar Empresa");
+        editar.addActionListener(buttonListener);
         pontoDois = new JButton("Ponto Dois");
         pontoDois.addActionListener(buttonListener);
         pontoTres = new JButton("Ponto Três");
         pontoTres.addActionListener(buttonListener);
         painelBotoes.add(adicionar);
         painelBotoes.add(remover);
+        painelBotoes.add(editar);
         painelBotoes.add(pontoDois);
         painelBotoes.add(pontoTres);
 
