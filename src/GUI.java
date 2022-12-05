@@ -8,17 +8,14 @@ import java.util.TimerTask;
 
 public class GUI extends JFrame {
     private StarThrive st;
-    private JPanel painelEmpresas, painelBotoes;
     private JPanel[][] panelHolder;
     private JFrame frameAdicionar;
-    private JScrollPane listScroller;
     private JComboBox<String> comboBoxTipo;
     private JButton adicionar, remover, editar, pontoDois, pontoTres, adicionarFinal, cancelar;
     private JTextField nome, distrito, latitude, longitude;
     private JTextField numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual, numMedCafesVendidosDia, numMedBolosVendidosDia, valMedFaturacaoAnualBoloVendidoDia, valMedFaturacaoAnualCafeVendidoDia;
     private JTextField valMedioFaturacaoMesaDia, numDiasFuncionamentoAno, numMesasInteriores, numMesasEsplanada, custoLicencaAnualMesaEsplanada, numMedioDiarioClientesDriveThru, valMedioFaturacaoClienteDriveThru;
     private JTextField custoAnualLimpezaEstabelecimento, numProdutos, valMedFaturacaoAnualProduto, tipo, areaCorredores, valMedFaturacaoAnualMetro2;
-    private ButtonListener buttonListener;
     private DefaultListModel<String> valoresLista;
     private JList<String> lista;
 
@@ -31,7 +28,7 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
-        painelEmpresas = new JPanel();
+        JPanel painelEmpresas = new JPanel();
         valoresLista = new DefaultListModel<>();
         for (Empresa e : st.getEmpresas())
             valoresLista.addElement(e.nome);
@@ -40,13 +37,13 @@ public class GUI extends JFrame {
         renderer.setHorizontalAlignment(SwingConstants.CENTER);
         lista.setFixedCellHeight(48);
         lista.setFixedCellWidth(1000);
-        listScroller = new JScrollPane(lista);
+        JScrollPane listScroller = new JScrollPane(lista);
         listScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         painelEmpresas.add(listScroller);
 
-        painelBotoes = new JPanel();
+        JPanel painelBotoes = new JPanel();
         painelBotoes.setLayout(new GridLayout(1, 5, 20, 60));
-        buttonListener = new ButtonListener();
+        ButtonListener buttonListener = new ButtonListener();
         adicionar = new JButton("Adicionar Empresa");
         adicionar.addActionListener(buttonListener);
         remover = new JButton("Remover Empresa");
@@ -156,6 +153,8 @@ public class GUI extends JFrame {
                         valoresLista.remove(lista.getSelectedIndex());
                     }
                 }
+            } else if (e.getSource() == editar) {
+
             } else if (e.getSource() == pontoDois) {
                 if (valoresLista.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Não existem empresas para mostrar!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -179,49 +178,49 @@ public class GUI extends JFrame {
                 try {
                     switch (comboBoxTipo.getSelectedIndex()) {
                         case 1 -> {
-                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(numMedCafesVendidosDia.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualCafeVendidoDia.getText()) >= 0){
+                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(numMedCafesVendidosDia.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualCafeVendidoDia.getText()) >= 0) {
                                 Cafe cafe = new Cafe(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(numMedCafesVendidosDia.getText()), Double.parseDouble(valMedFaturacaoAnualCafeVendidoDia.getText()));
                                 st.adicionarEmpresa(cafe);
                                 valoresLista.addElement(cafe.getNome());
                             } else throw new NumberFormatException();
                         }
                         case 2 -> {
-                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(numMedBolosVendidosDia.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualBoloVendidoDia.getText()) >= 0){
+                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(numMedBolosVendidosDia.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualBoloVendidoDia.getText()) >= 0) {
                                 Pastelaria pastelaria = new Pastelaria(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(numMedBolosVendidosDia.getText()), Double.parseDouble(valMedFaturacaoAnualBoloVendidoDia.getText()));
                                 st.adicionarEmpresa(pastelaria);
                                 valoresLista.addElement(pastelaria.getNome());
-                            }else throw new NumberFormatException();
+                            } else throw new NumberFormatException();
                         }
                         case 3 -> {
-                            if(Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoMesaDia.getText()) >= 0 && Integer.parseInt(numDiasFuncionamentoAno.getText()) >= 0 && Integer.parseInt(numMesasInteriores.getText()) >= 0 && Integer.parseInt(numMesasEsplanada.getText()) >= 0 && Double.parseDouble(custoLicencaAnualMesaEsplanada.getText()) >= 0){
+                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoMesaDia.getText()) >= 0 && Integer.parseInt(numDiasFuncionamentoAno.getText()) >= 0 && Integer.parseInt(numMesasInteriores.getText()) >= 0 && Integer.parseInt(numMesasEsplanada.getText()) >= 0 && Double.parseDouble(custoLicencaAnualMesaEsplanada.getText()) >= 0) {
                                 RestauranteLocal restauranteLocal = new RestauranteLocal(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(valMedioFaturacaoMesaDia.getText()), Integer.parseInt(numDiasFuncionamentoAno.getText()), Integer.parseInt(numMesasInteriores.getText()), Integer.parseInt(numMesasEsplanada.getText()), Double.parseDouble(custoLicencaAnualMesaEsplanada.getText()));
                                 st.adicionarEmpresa(restauranteLocal);
                                 valoresLista.addElement(restauranteLocal.getNome());
-                            }else throw new NumberFormatException();
+                            } else throw new NumberFormatException();
                         }
                         case 4 -> {
-                            if(Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoMesaDia.getText()) >= 0 && Integer.parseInt(numDiasFuncionamentoAno.getText()) >= 0 && Integer.parseInt(numMesasInteriores.getText()) >= 0 && Integer.parseInt(numMedioDiarioClientesDriveThru.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoClienteDriveThru.getText()) >= 0){
+                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoMesaDia.getText()) >= 0 && Integer.parseInt(numDiasFuncionamentoAno.getText()) >= 0 && Integer.parseInt(numMesasInteriores.getText()) >= 0 && Integer.parseInt(numMedioDiarioClientesDriveThru.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoClienteDriveThru.getText()) >= 0) {
                                 RestauranteFastFood restauranteFastFood = new RestauranteFastFood(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(valMedioFaturacaoMesaDia.getText()), Integer.parseInt(numDiasFuncionamentoAno.getText()), Integer.parseInt(numMesasInteriores.getText()), Double.parseDouble(numMedioDiarioClientesDriveThru.getText()), Double.parseDouble(valMedioFaturacaoClienteDriveThru.getText()));
                                 st.adicionarEmpresa(restauranteFastFood);
                                 valoresLista.addElement(restauranteFastFood.getNome());
-                            }else throw new NumberFormatException();
+                            } else throw new NumberFormatException();
                         }
                         case 5 -> {
-                            if(Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()) >= 0 && Integer.parseInt(numProdutos.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualProduto.getText()) >= 0){
+                            if (Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()) >= 0 && Integer.parseInt(numProdutos.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualProduto.getText()) >= 0) {
                                 Frutaria frutaria = new Frutaria(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()), Integer.parseInt(numProdutos.getText()), Double.parseDouble(valMedFaturacaoAnualProduto.getText()));
                                 st.adicionarEmpresa(frutaria);
                                 valoresLista.addElement(frutaria.getNome());
-                            }else throw new NumberFormatException();
+                            } else throw new NumberFormatException();
                         }
                         case 6 -> {
-                            if(Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()) >= 0 && Double.parseDouble(areaCorredores.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualMetro2.getText()) >= 0){
+                            if (Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()) >= 0 && Double.parseDouble(areaCorredores.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualMetro2.getText()) >= 0) {
                                 Mercado mercado = new Mercado(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()), tipo.getText(), Double.parseDouble(areaCorredores.getText()), Double.parseDouble(valMedFaturacaoAnualMetro2.getText()));
                                 st.adicionarEmpresa(mercado);
                                 valoresLista.addElement(mercado.getNome());
-                            }else throw new NumberFormatException();
+                            } else throw new NumberFormatException();
                         }
                     }
-                }catch (NumberFormatException ex) {
+                } catch (NumberFormatException ex) {
                     frameAdicionar.dispose();
                     enable(true);
                     show();
