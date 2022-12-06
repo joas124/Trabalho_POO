@@ -239,74 +239,76 @@ public class GUI extends JFrame {
                     if (panelHolder[0][2].getComponents().length != 0){
                         tipoEmpresa = comboBoxTipo.getSelectedIndex();
                     }
+                    if (!nome.getText().equals("") && !distrito.getText().equals("")) {
                     switch (tipoEmpresa) {
-                        case 1 -> {
-                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(numMedCafesVendidosDia.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualCafeVendidoDia.getText()) >= 0) {
-                                Cafe cafe = new Cafe(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(numMedCafesVendidosDia.getText()), Double.parseDouble(valMedFaturacaoAnualCafeVendidoDia.getText()));
-                                if(panelHolder[0][2].getComponents().length != 0){
-                                    st.adicionarEmpresa(cafe);
-                                    valoresLista.addElement(cafe.getNome());
-                                }else {
-                                    st.editarEmpresa(cafe, lista.getSelectedIndex());
-                                }
-                            } else throw new NumberFormatException();
+                            case 1 -> {
+                                if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(numMedCafesVendidosDia.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualCafeVendidoDia.getText()) >= 0) {
+                                    Cafe cafe = new Cafe(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(numMedCafesVendidosDia.getText()), Double.parseDouble(valMedFaturacaoAnualCafeVendidoDia.getText()));
+                                    if (panelHolder[0][2].getComponents().length != 0) {
+                                        st.adicionarEmpresa(cafe);
+                                        valoresLista.addElement(cafe.getNome());
+                                    } else {
+                                        st.editarEmpresa(cafe, lista.getSelectedIndex());
+                                    }
+                                } else throw new NumberFormatException();
+                            }
+                            case 2 -> {
+                                if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(numMedBolosVendidosDia.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualBoloVendidoDia.getText()) >= 0) {
+                                    Pastelaria pastelaria = new Pastelaria(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(numMedBolosVendidosDia.getText()), Double.parseDouble(valMedFaturacaoAnualBoloVendidoDia.getText()));
+                                    if (panelHolder[0][2].getComponents().length != 0) {
+                                        st.adicionarEmpresa(pastelaria);
+                                        valoresLista.addElement(pastelaria.getNome());
+                                    } else {
+                                        st.editarEmpresa(pastelaria, lista.getSelectedIndex());
+                                    }
+                                } else throw new NumberFormatException();
+                            }
+                            case 3 -> {
+                                if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoMesaDia.getText()) >= 0 && Integer.parseInt(numDiasFuncionamentoAno.getText()) >= 0 && Integer.parseInt(numMesasInteriores.getText()) >= 0 && Integer.parseInt(numMesasEsplanada.getText()) >= 0 && Double.parseDouble(custoLicencaAnualMesaEsplanada.getText()) >= 0) {
+                                    RestauranteLocal restauranteLocal = new RestauranteLocal(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(valMedioFaturacaoMesaDia.getText()), Integer.parseInt(numDiasFuncionamentoAno.getText()), Integer.parseInt(numMesasInteriores.getText()), Integer.parseInt(numMesasEsplanada.getText()), Double.parseDouble(custoLicencaAnualMesaEsplanada.getText()));
+                                    if (panelHolder[0][2].getComponents().length != 0) {
+                                        st.adicionarEmpresa(restauranteLocal);
+                                        valoresLista.addElement(restauranteLocal.getNome());
+                                    } else {
+                                        st.editarEmpresa(restauranteLocal, lista.getSelectedIndex());
+                                    }
+                                } else throw new NumberFormatException();
+                            }
+                            case 4 -> {
+                                if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoMesaDia.getText()) >= 0 && Integer.parseInt(numDiasFuncionamentoAno.getText()) >= 0 && Integer.parseInt(numMesasInteriores.getText()) >= 0 && Double.parseDouble(numMedioDiarioClientesDriveThru.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoClienteDriveThru.getText()) >= 0) {
+                                    RestauranteFastFood restauranteFastFood = new RestauranteFastFood(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(valMedioFaturacaoMesaDia.getText()), Integer.parseInt(numDiasFuncionamentoAno.getText()), Integer.parseInt(numMesasInteriores.getText()), Double.parseDouble(numMedioDiarioClientesDriveThru.getText()), Double.parseDouble(valMedioFaturacaoClienteDriveThru.getText()));
+                                    if (panelHolder[0][2].getComponents().length != 0) {
+                                        st.adicionarEmpresa(restauranteFastFood);
+                                        valoresLista.addElement(restauranteFastFood.getNome());
+                                    } else {
+                                        st.editarEmpresa(restauranteFastFood, lista.getSelectedIndex());
+                                    }
+                                } else throw new NumberFormatException();
+                            }
+                            case 5 -> {
+                                if (Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()) >= 0 && Integer.parseInt(numProdutos.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualProduto.getText()) >= 0) {
+                                    Frutaria frutaria = new Frutaria(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()), Integer.parseInt(numProdutos.getText()), Double.parseDouble(valMedFaturacaoAnualProduto.getText()));
+                                    if (panelHolder[0][2].getComponents().length != 0) {
+                                        st.adicionarEmpresa(frutaria);
+                                        valoresLista.addElement(frutaria.getNome());
+                                    } else {
+                                        st.editarEmpresa(frutaria, lista.getSelectedIndex());
+                                    }
+                                } else throw new NumberFormatException();
+                            }
+                            case 6 -> {
+                                if (Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()) >= 0 && Double.parseDouble(areaCorredores.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualMetro2.getText()) >= 0) {
+                                    Mercado mercado = new Mercado(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()), tipo.getText(), Double.parseDouble(areaCorredores.getText()), Double.parseDouble(valMedFaturacaoAnualMetro2.getText()));
+                                    if (panelHolder[0][2].getComponents().length != 0) {
+                                        st.adicionarEmpresa(mercado);
+                                        valoresLista.addElement(mercado.getNome());
+                                    } else {
+                                        st.editarEmpresa(mercado, lista.getSelectedIndex());
+                                    }
+                                } else throw new NumberFormatException();
+                            }
                         }
-                        case 2 -> {
-                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(numMedBolosVendidosDia.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualBoloVendidoDia.getText()) >= 0) {
-                                Pastelaria pastelaria = new Pastelaria(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(numMedBolosVendidosDia.getText()), Double.parseDouble(valMedFaturacaoAnualBoloVendidoDia.getText()));
-                                if(panelHolder[0][2].getComponents().length != 0){
-                                    st.adicionarEmpresa(pastelaria);
-                                    valoresLista.addElement(pastelaria.getNome());
-                                }else {
-                                    st.editarEmpresa(pastelaria, lista.getSelectedIndex());
-                                }
-                            } else throw new NumberFormatException();
-                        }
-                        case 3 -> {
-                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoMesaDia.getText()) >= 0 && Integer.parseInt(numDiasFuncionamentoAno.getText()) >= 0 && Integer.parseInt(numMesasInteriores.getText()) >= 0 && Integer.parseInt(numMesasEsplanada.getText()) >= 0 && Double.parseDouble(custoLicencaAnualMesaEsplanada.getText()) >= 0) {
-                                RestauranteLocal restauranteLocal = new RestauranteLocal(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(valMedioFaturacaoMesaDia.getText()), Integer.parseInt(numDiasFuncionamentoAno.getText()), Integer.parseInt(numMesasInteriores.getText()), Integer.parseInt(numMesasEsplanada.getText()), Double.parseDouble(custoLicencaAnualMesaEsplanada.getText()));
-                                if(panelHolder[0][2].getComponents().length != 0){
-                                    st.adicionarEmpresa(restauranteLocal);
-                                    valoresLista.addElement(restauranteLocal.getNome());
-                                }else {
-                                    st.editarEmpresa(restauranteLocal, lista.getSelectedIndex());
-                                }
-                            } else throw new NumberFormatException();
-                        }
-                        case 4 -> {
-                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoMesaDia.getText()) >= 0 && Integer.parseInt(numDiasFuncionamentoAno.getText()) >= 0 && Integer.parseInt(numMesasInteriores.getText()) >= 0 && Double.parseDouble(numMedioDiarioClientesDriveThru.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoClienteDriveThru.getText()) >= 0) {
-                                RestauranteFastFood restauranteFastFood = new RestauranteFastFood(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(valMedioFaturacaoMesaDia.getText()), Integer.parseInt(numDiasFuncionamentoAno.getText()), Integer.parseInt(numMesasInteriores.getText()), Double.parseDouble(numMedioDiarioClientesDriveThru.getText()), Double.parseDouble(valMedioFaturacaoClienteDriveThru.getText()));
-                                if (panelHolder[0][2].getComponents().length != 0) {
-                                    st.adicionarEmpresa(restauranteFastFood);
-                                    valoresLista.addElement(restauranteFastFood.getNome());
-                                } else {
-                                    st.editarEmpresa(restauranteFastFood, lista.getSelectedIndex());
-                                }
-                            } else throw new NumberFormatException();
-                        }
-                        case 5 -> {
-                            if (Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()) >= 0 && Integer.parseInt(numProdutos.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualProduto.getText()) >= 0) {
-                                Frutaria frutaria = new Frutaria(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()), Integer.parseInt(numProdutos.getText()), Double.parseDouble(valMedFaturacaoAnualProduto.getText()));
-                                if(panelHolder[0][2].getComponents().length != 0){
-                                    st.adicionarEmpresa(frutaria);
-                                    valoresLista.addElement(frutaria.getNome());
-                                }else {
-                                    st.editarEmpresa(frutaria, lista.getSelectedIndex());
-                                }
-                            } else throw new NumberFormatException();
-                        }
-                        case 6 -> {
-                            if (Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()) >= 0 && Double.parseDouble(areaCorredores.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualMetro2.getText()) >= 0) {
-                                Mercado mercado = new Mercado(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()), tipo.getText(), Double.parseDouble(areaCorredores.getText()), Double.parseDouble(valMedFaturacaoAnualMetro2.getText()));
-                                if(panelHolder[0][2].getComponents().length != 0){
-                                    st.adicionarEmpresa(mercado);
-                                    valoresLista.addElement(mercado.getNome());
-                                }else {
-                                    st.editarEmpresa(mercado, lista.getSelectedIndex());
-                                }
-                            } else throw new NumberFormatException();
-                        }
-                    }
+                    } else throw new NumberFormatException();
                 } catch (NumberFormatException ex) {
                     frameAdicionarEditar.dispose();
                     enable(true);
@@ -363,7 +365,7 @@ public class GUI extends JFrame {
         frameAdicionarEditar = new JFrame();
         ButtonListener buttonListener = new ButtonListener();
         frameAdicionarEditar.setTitle("Adicionar Empresa");
-        frameAdicionarEditar.setSize(1250, 800);
+        frameAdicionarEditar.setSize(1300, 800);
         frameAdicionarEditar.setLayout(new GridLayout(6, 6, 0, 0));
         frameAdicionarEditar.setLocationRelativeTo(this);
         frameAdicionarEditar.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
