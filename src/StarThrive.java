@@ -64,6 +64,7 @@ public class StarThrive implements Serializable{
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o ficheiro!", "Erro", JOptionPane.ERROR_MESSAGE);
                 } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
+                    System.out.println(ex);
                     JOptionPane.showMessageDialog(null, "Ficheiro \"starthrive.txt\" mal formatado!", "Erro", JOptionPane.ERROR_MESSAGE);
                     empresas = new ArrayList<>();
                 }
@@ -105,14 +106,14 @@ public class StarThrive implements Serializable{
         File ficheiro = new File("starthrive.txt");
         try {
             FileWriter fw = new FileWriter(ficheiro);
-            //BufferedWriter bw = new BufferedWriter(fw);
+            BufferedWriter bw = new BufferedWriter(fw);
 
             for (Empresa e: empresas){
                 fw.write(e.toStringFicheiro());
             }
 
             fw.close();
-            //bw.close();
+            bw.close();
         } catch (FileNotFoundException ex){
             System.out.println("Erro a criar o ficheiro.");
         } catch (IOException ex) {
@@ -120,9 +121,10 @@ public class StarThrive implements Serializable{
         }
     }
 
-    public ArrayList<String> receitaDespesaLucro(){
+    public String receitaDespesaLucro(){
         String[] categorias = {"Café", "Pastelaria", "Restaurante Local", "Restaurante Fast-food", "Frutaria", "Mercado"};
-        ArrayList<String> resultadoCategorias = new ArrayList<>();
+//        ArrayList<String> resultadoCategorias = new ArrayList<>();
+        String teste = "";
         for(String c: categorias){
             double maiorReceita = 0, menorDespesa = Double.MAX_VALUE, maiorLucro = -menorDespesa;
             String nomeEmpresaReceita = null, nomeEmpresaDespesa = null, nomeEmpresaLucro = null;
@@ -142,11 +144,11 @@ public class StarThrive implements Serializable{
             }
             if (nomeEmpresaReceita != null && nomeEmpresaDespesa != null && nomeEmpresaLucro != null) {
                 String resultado = "Empresa da categoria: " + c + "\n\n\t•Com maior receita: " + nomeEmpresaReceita + ", " + maiorReceita + "€\n"
-                 + "\t•Com menor despesa: " + nomeEmpresaDespesa + ", " + menorDespesa + "€\n" + "\t•Com maior lucro: " + nomeEmpresaLucro + ", " + maiorLucro + "€\n";
-                resultadoCategorias.add(resultado);
+                 + "\t•Com menor despesa: " + nomeEmpresaDespesa + ", " + menorDespesa + "€\n" + "\t•Com maior lucro: " + nomeEmpresaLucro + ", " + maiorLucro + "€\n\n";
+                teste = teste + resultado;
             }
         }
-        return resultadoCategorias;
+        return teste;
         /*-------------------------------------------------OUTRA MANEIRA-------------------------------------------------*/
         /*String[] categorias = {"Café", "Pastelaria", "Restaurante Local", "Restaurante Fast-food", "Frutaria", "Mercado"};
         for(String c: categorias){

@@ -143,6 +143,6 @@ public abstract class Empresa implements Serializable {
      * @return String com as caracteristicas da empresa para o ficheiro txt
      */
     public String toStringFicheiro(){
-        return nome + ',' + categoria + ',' + distrito + ',' + localizacao + ',';
+        return nome + ',' + distrito + ',' + localizacao + ',';
     }
 }

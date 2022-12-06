@@ -98,7 +98,7 @@ public abstract class Restaurante extends Restauracao {
     public String toString() {
         return super.toString() +
                 "\t•Valor médio de faturação por mesa = " + valMedioFaturacaoMesaDia + "€\n" +
-                "\t•Número de dias de funcionamento por ano =" + numDiasFuncionamentoAno + '\n' +
+                "\t•Número de dias de funcionamento por ano = " + numDiasFuncionamentoAno + '\n' +
                 "\t•Número de mesas interiores = " + numMesasInteriores + '\n';
     }
     /**

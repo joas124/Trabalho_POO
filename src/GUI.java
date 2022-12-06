@@ -12,10 +12,25 @@ public class GUI extends JFrame {
     private JFrame frameAdicionarEditar;
     private int tipoEmpresa;
     private JComboBox<String> comboBoxTipo;
+    /**
+     * Botões para Adicionar, Remover
+     */
     private JButton adicionar, remover, editar, pontoDois, pontoTres, adicionarEditar, cancelar;
+    /**
+     * Text field para as variaveis comuns de uma Empresa
+     */
     private JTextField nome, distrito, latitude, longitude;
+    /**
+     * Text field para as variaveis comuns a uma Pastelaria e Cafe
+     */
     private JTextField numEmpregadosMesa, numMedClientesDiario, custoEmpregadosMesa, custoSalarioMedioAnual, numMedCafesVendidosDia, numMedBolosVendidosDia, valMedFaturacaoAnualBoloVendidoDia, valMedFaturacaoAnualCafeVendidoDia;
+    /**
+     * Text field para as variaveis comuns a um Restaurante Local e a um Restaurante Fast-food
+     */
     private JTextField valMedioFaturacaoMesaDia, numDiasFuncionamentoAno, numMesasInteriores, numMesasEsplanada, custoLicencaAnualMesaEsplanada, numMedioDiarioClientesDriveThru, valMedioFaturacaoClienteDriveThru;
+    /**
+     * Text field para as variaveis comuns a um Mercado e a uma Frutaria
+     */
     private JTextField custoAnualLimpezaEstabelecimento, numProdutos, valMedFaturacaoAnualProduto, tipo, areaCorredores, valMedFaturacaoAnualMetro2;
     private DefaultListModel<String> valoresLista;
     private JList<String> lista;
@@ -64,21 +79,21 @@ public class GUI extends JFrame {
         add(painelEmpresas);
         add(painelBotoes);
         lista.addMouseListener(new MouseAdapter() {
-            private int eventCounter = 0;
-            java.util.Timer timer = new java.util.Timer("doubleClickTimer", false);
+            private int contador = 0;
+            java.util.Timer timer = new java.util.Timer(false);
 
 
             @Override
             public void mouseClicked(final MouseEvent e) {
-                eventCounter = e.getClickCount();
+                contador = e.getClickCount();
                 if (e.getClickCount() == 1) {
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
-                            if (eventCounter > 1 && !lista.isSelectionEmpty()) {
+                            if (contador > 1 && !lista.isSelectionEmpty()) {
                                 JOptionPane.showMessageDialog(null, st.getEmpresa(lista.getSelectedIndex()), "Informações da Empresa", JOptionPane.PLAIN_MESSAGE);
                             }
-                            eventCounter = 0;
+                            contador = 0;
                         }
                     }, 400);
                 }
@@ -114,10 +129,11 @@ public class GUI extends JFrame {
                 }
             } else if (e.getSource() == editar) {
                 if (valoresLista.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Não existem empresas para remover!", "Erro", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Não existem empresas para editar!", "Erro", JOptionPane.ERROR_MESSAGE);
                 } else if (lista.isSelectionEmpty()) {
                     JOptionPane.showMessageDialog(null, "Nenhuma empresa selecionada!", "Erro", JOptionPane.ERROR_MESSAGE);
                 } else {
+                    enable(false);
                     adicionarOuEditar(true);
                     switch (st.getEmpresa(lista.getSelectedIndex()).getCategoria()){
                         case("Café") -> {
@@ -202,9 +218,10 @@ public class GUI extends JFrame {
                 if (valoresLista.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Não existem empresas para mostrar!", "Erro", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    for (String s : st.receitaDespesaLucro()) {
+                    /*for (String s : st.receitaDespesaLucro()) {
                         JOptionPane.showMessageDialog(null, s, "Ponto Dois", JOptionPane.PLAIN_MESSAGE);
-                    }
+                    }*/
+                    JOptionPane.showMessageDialog(null, st.receitaDespesaLucro(), "Ponto Dois", JOptionPane.PLAIN_MESSAGE);
                 }
 
             } else if (e.getSource() == pontoTres) {
@@ -213,9 +230,9 @@ public class GUI extends JFrame {
                 } else if (st.maiorCapacidadeClientes() == null) {
                     JOptionPane.showMessageDialog(null, "Não existem no mínimo 2 empresas da área da restauração para mostrar!", "Erro", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    for (Empresa empresa : st.maiorCapacidadeClientes()) {
-                        JOptionPane.showMessageDialog(null, empresa, "Ponto Três", JOptionPane.PLAIN_MESSAGE);
-                    }
+                    JOptionPane.showMessageDialog(null,"Com maior capacidade de clientes por dia:\n" + st.maiorCapacidadeClientes()[0], "Empresa do tipo \"Restauração\"", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Com 2ª maior capacidade de clientes por dia:\n" + st.maiorCapacidadeClientes()[0], "Empresa do tipo \"Restauração\"", JOptionPane.PLAIN_MESSAGE);
+
                 }
             } else if (e.getSource() == adicionarEditar) {
                 try {
@@ -257,15 +274,16 @@ public class GUI extends JFrame {
                             } else throw new NumberFormatException();
                         }
                         case 4 -> {
-                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoMesaDia.getText()) >= 0 && Integer.parseInt(numDiasFuncionamentoAno.getText()) >= 0 && Integer.parseInt(numMesasInteriores.getText()) >= 0 && Integer.parseInt(numMedioDiarioClientesDriveThru.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoClienteDriveThru.getText()) >= 0) {
+                            if (Integer.parseInt(numEmpregadosMesa.getText()) > 0 && Double.parseDouble(numMedClientesDiario.getText()) >= 0 && Double.parseDouble(custoEmpregadosMesa.getText()) >= 0 && Double.parseDouble(custoSalarioMedioAnual.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoMesaDia.getText()) >= 0 && Integer.parseInt(numDiasFuncionamentoAno.getText()) >= 0 && Integer.parseInt(numMesasInteriores.getText()) >= 0 && Double.parseDouble(numMedioDiarioClientesDriveThru.getText()) >= 0 && Double.parseDouble(valMedioFaturacaoClienteDriveThru.getText()) >= 0) {
                                 RestauranteFastFood restauranteFastFood = new RestauranteFastFood(nome.getText(), distrito.getText(), new GPS(Double.parseDouble(latitude.getText()), Double.parseDouble(longitude.getText())), Integer.parseInt(numEmpregadosMesa.getText()), Double.parseDouble(numMedClientesDiario.getText()), Double.parseDouble(custoEmpregadosMesa.getText()), Double.parseDouble(custoSalarioMedioAnual.getText()), Double.parseDouble(valMedioFaturacaoMesaDia.getText()), Integer.parseInt(numDiasFuncionamentoAno.getText()), Integer.parseInt(numMesasInteriores.getText()), Double.parseDouble(numMedioDiarioClientesDriveThru.getText()), Double.parseDouble(valMedioFaturacaoClienteDriveThru.getText()));
-                                if(panelHolder[0][2].getComponents().length != 0){
+                                if (panelHolder[0][2].getComponents().length != 0) {
                                     st.adicionarEmpresa(restauranteFastFood);
                                     valoresLista.addElement(restauranteFastFood.getNome());
-                                }else {
+                                } else {
                                     st.editarEmpresa(restauranteFastFood, lista.getSelectedIndex());
                                 }
-                            } else throw new NumberFormatException();
+//                            } else throw new NumberFormatException();
+                            }else System.out.println("O ERRO É AQUI");
                         }
                         case 5 -> {
                             if (Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()) >= 0 && Integer.parseInt(numProdutos.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualProduto.getText()) >= 0) {
@@ -297,9 +315,11 @@ public class GUI extends JFrame {
                     JOptionPane.showMessageDialog(null, "Algum dos parâmetros da empresa não foi inserido corretamente!", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
                 st.escreverFicheiro();
-                valoresLista.set(lista.getSelectedIndex(), st.getEmpresa(lista.getSelectedIndex()).getNome());
-                lista.revalidate();
-                lista.repaint();
+                if (panelHolder[0][2].getComponents().length == 0 && frameAdicionarEditar.isActive()) {
+                    valoresLista.set(lista.getSelectedIndex(), st.getEmpresa(lista.getSelectedIndex()).getNome());
+                    lista.revalidate();
+                    lista.repaint();
+                }
                 frameAdicionarEditar.dispose();
                 enable(true);
                 show();
