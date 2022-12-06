@@ -64,7 +64,7 @@ public class StarThrive implements Serializable{
                     JOptionPane.showMessageDialog(null, "Erro ao ler o ficheiro!", "Erro", JOptionPane.ERROR_MESSAGE);
                 } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
                     JOptionPane.showMessageDialog(null, "Ficheiro \"starthrive.txt\" mal formatado!", "Erro", JOptionPane.ERROR_MESSAGE);
-                    empresas = new ArrayList<>(); //TODO: Pode ser opcional? Perguntar a professora
+                    empresas = new ArrayList<>();
                 }
             }
         }
@@ -107,15 +107,17 @@ public class StarThrive implements Serializable{
             double maiorReceita = 0, menorDespesa = Double.MAX_VALUE, maiorLucro = -menorDespesa;
             String nomeEmpresaReceita = null, nomeEmpresaDespesa = null, nomeEmpresaLucro = null;
             for(Empresa e: empresas){
-                if(c.equals(e.categoria) && e.defReceitaAnual()>maiorReceita){
-                    maiorReceita = e.defReceitaAnual();
-                    nomeEmpresaReceita = e.nome;
-                }if (c.equals(e.categoria) && e.defDespesaAnual()<menorDespesa){
-                    menorDespesa = e.defDespesaAnual();
-                    nomeEmpresaDespesa = e.nome;
-                }if (c.equals(e.categoria) && e.defReceitaAnual()-e.defDespesaAnual() > maiorLucro){
-                    maiorLucro = e.defReceitaAnual()-e.defDespesaAnual();
-                    nomeEmpresaLucro = e.nome;
+                if(c.equals(e.categoria)){
+                    if(e.defReceitaAnual()>maiorReceita){
+                        maiorReceita = e.defReceitaAnual();
+                        nomeEmpresaReceita = e.nome;
+                    }if(e.defDespesaAnual()<menorDespesa){
+                        menorDespesa = e.defDespesaAnual();
+                        nomeEmpresaDespesa = e.nome;
+                    }if(e.defReceitaAnual()-e.defDespesaAnual() > maiorLucro){
+                        maiorLucro = e.defReceitaAnual()-e.defDespesaAnual();
+                        nomeEmpresaLucro = e.nome;
+                    }
                 }
             }
             if (nomeEmpresaReceita != null && nomeEmpresaDespesa != null && nomeEmpresaLucro != null) {

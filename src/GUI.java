@@ -298,8 +298,10 @@ public class GUI extends JFrame {
                     JOptionPane.showMessageDialog(null, "Algum dos parâmetros da empresa não foi inserido corretamente!", "Erro", JOptionPane.ERROR_MESSAGE);
                 }
                 st.escreverFicheiro();
+                valoresLista.set(lista.getSelectedIndex(), st.getEmpresa(lista.getSelectedIndex()).getNome());
+                lista.revalidate();
+                lista.repaint();
                 frameAdicionarEditar.dispose();
-                
                 enable(true);
                 show();
             } else if (e.getSource() == cancelar) {
