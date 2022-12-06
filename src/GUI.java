@@ -219,7 +219,6 @@ public class GUI extends JFrame {
                 }
             } else if (e.getSource() == adicionarEditar) {
                 try {
-                    System.out.println(lista.getSelectedIndex());
                     if (panelHolder[0][2].getComponents().length != 0){
                         tipoEmpresa = comboBoxTipo.getSelectedIndex();
                     }

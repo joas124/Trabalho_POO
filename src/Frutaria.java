@@ -91,4 +91,13 @@ public class Frutaria extends Mercearia {
                 "\t•Número de produtos = " + numProdutos + '\n' +
                 "\t•Valor médio de faturação anual por produto = " + valMedFaturacaoAnualProduto + "€\n";
     }
+    /**
+     * Metodo apenas utilizado para escrever as empresas no ficheiro de texto (Que
+     * nao e pedido no enunciado, mas deu jeito para criar as empresas de cada tipo)
+     * @return String com as caracteristicas da empresa para o ficheiro txt
+     */
+    @Override
+    public String toStringFicheiro() {
+        return "5," + super.toStringFicheiro() + numProdutos + ',' + valMedFaturacaoAnualProduto + '\n';
+    }
 }

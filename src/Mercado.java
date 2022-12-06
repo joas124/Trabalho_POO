@@ -115,4 +115,13 @@ public class Mercado extends Mercearia {
                 "\t•Area de corredores = " + areaCorredores + "m²\n" +
                 "\t•Valor medio de faturacao anual por metro quadrado = " + valMedFaturacaoAnualMetro2 + "€\n";
     }
+    /**
+     * Metodo apenas utilizado para escrever as empresas no ficheiro de texto (Que
+     * nao e pedido no enunciado, mas deu jeito para criar as empresas de cada tipo)
+     * @return String com as caracteristicas da empresa para o ficheiro txt
+     */
+    @Override
+    public String toStringFicheiro() {
+        return "6," + super.toStringFicheiro() + tipo + ',' + areaCorredores + ',' + valMedFaturacaoAnualMetro2 + '\n';
+    }
 }

@@ -13,7 +13,8 @@ public class StarThrive implements Serializable{
         StarThrive st = new StarThrive();
         st.lerFicheiro();
         new GUI(st);
-        st.escreverFicheiro(); // Meio desnecessário, tenho de ver isso melhor
+        st.escreverFicheiro();
+        st.escreverFicheiroTexto();
     }
 
     public ArrayList<Empresa> getEmpresas() {
@@ -93,6 +94,25 @@ public class StarThrive implements Serializable{
             
             fOS.close();
             oOS.close();
+        } catch (FileNotFoundException ex){
+            System.out.println("Erro a criar o ficheiro.");
+        } catch (IOException ex) {
+            System.out.println("Erro a escrever para o ficheiro.");
+        }
+    }
+
+    public void escreverFicheiroTexto(){
+        File ficheiro = new File("starthrive.txt");
+        try {
+            FileWriter fw = new FileWriter(ficheiro);
+            //BufferedWriter bw = new BufferedWriter(fw);
+
+            for (Empresa e: empresas){
+                fw.write(e.toStringFicheiro());
+            }
+
+            fw.close();
+            //bw.close();
         } catch (FileNotFoundException ex){
             System.out.println("Erro a criar o ficheiro.");
         } catch (IOException ex) {

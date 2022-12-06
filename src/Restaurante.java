@@ -101,5 +101,14 @@ public abstract class Restaurante extends Restauracao {
                 "\t•Número de dias de funcionamento por ano =" + numDiasFuncionamentoAno + '\n' +
                 "\t•Número de mesas interiores = " + numMesasInteriores + '\n';
     }
-
+    /**
+     * Metodo apenas utilizado para escrever as empresas no ficheiro de texto (Que
+     * nao e pedido no enunciado, mas deu jeito para criar as empresas de cada tipo)
+     * @return String com as caracteristicas da empresa para o ficheiro txt
+     */
+    @Override
+    public String toStringFicheiro() {
+        return super.toStringFicheiro() + valMedioFaturacaoMesaDia + ',' + numDiasFuncionamentoAno + ',' +
+                numMesasInteriores + ',';
+    }
 }

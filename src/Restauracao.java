@@ -139,4 +139,14 @@ public abstract class Restauracao extends Empresa{
                 "\t•Salario mensal de cada empregado de mesa = " + custoEmpregadosMesa + "€\n" +
                 "\t•Salario anual de cada empregado de mesa = " + custoSalarioMedioAnual + "€\n";
     }
+    /**
+     * Metodo apenas utilizado para escrever as empresas no ficheiro de texto (Que
+     * nao e pedido no enunciado, mas deu jeito para criar as empresas de cada tipo)
+     * @return String com as caracteristicas da empresa para o ficheiro txt
+     */
+    @Override
+    public String toStringFicheiro() {
+        return super.toStringFicheiro() + numMedClientesDiario + ',' + numEmpregadosMesa + ',' +
+                custoEmpregadosMesa + ',' + custoSalarioMedioAnual + ',';
+    }
 }
