@@ -54,6 +54,22 @@ public class Mercado extends Mercearia {
     }
 
     /**
+     * Metodo para obter o valor médio de faturacao anual por metro quadrado
+     * @return double com o valor médio de faturacao anual por metro quadrado
+     */
+    public double getValMedFaturacaoAnualMetro2() {
+        return valMedFaturacaoAnualMetro2;
+    }
+
+    /**
+     * Metodo para definir o valor médio de faturacao anual por metro quadrado
+     * @param valMedFaturacaoAnualMetro2 double com o valor médio de faturacao anual por metro quadrado
+     */
+    public void setValMedFaturacaoAnualMetro2(double valMedFaturacaoAnualMetro2) {
+        this.valMedFaturacaoAnualMetro2 = valMedFaturacaoAnualMetro2;
+    }
+
+    /**
      * Metodo para obter a area dos corredores
      * @return double com a area dos corredores
      */

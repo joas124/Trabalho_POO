@@ -79,6 +79,9 @@ public class StarThrive implements Serializable{
     public void removerEmpresa(Empresa empresa){
         empresas.remove(empresa);
     }
+    public void editarEmpresa(Empresa empresa, int index){
+        empresas.set(index, empresa);
+    }
 
     public void escreverFicheiro(){
         File ficheiro = new File("starthrive.dat");
