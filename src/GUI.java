@@ -282,8 +282,7 @@ public class GUI extends JFrame {
                                 } else {
                                     st.editarEmpresa(restauranteFastFood, lista.getSelectedIndex());
                                 }
-//                            } else throw new NumberFormatException();
-                            }else System.out.println("O ERRO É AQUI");
+                            } else throw new NumberFormatException();
                         }
                         case 5 -> {
                             if (Double.parseDouble(custoAnualLimpezaEstabelecimento.getText()) >= 0 && Integer.parseInt(numProdutos.getText()) >= 0 && Double.parseDouble(valMedFaturacaoAnualProduto.getText()) >= 0) {
