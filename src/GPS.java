@@ -2,6 +2,8 @@ import java.io.Serializable;
 
 /**
  * Classe para guardar as coordenadas GPS
+ * @author Joás Sila e Diogo Silva
+ * @version 3.14
  */
 public class GPS implements Serializable {
     /**

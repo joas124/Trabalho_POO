@@ -2,6 +2,8 @@ import java.io.Serializable;
 
 /**
  * Classe para a gestão de uma Empresa
+ * @author Joás Sila e Diogo Silva
+ * @version 3.14
  */
 public abstract class Empresa implements Serializable {
     /**
@@ -120,6 +122,13 @@ public abstract class Empresa implements Serializable {
      * @return <i>True</i> caso a empresa tenha tido lucro, <i>False</i> caso contrário
      */
     public abstract boolean lucro();
+
+    /**
+     * Método abstrato para apresentar (em uma empresa da area da restauracao)
+     * a maior capacidade de clientes por dia.
+     * @return Um double com a maior capacidade de clientes por dia (caso a empresa seja da
+     * area da restauracao), 0 caso contrario
+     */
     public abstract double capacidadeRestauracao();
     /**
      * Método para converter a classe Empresa em String

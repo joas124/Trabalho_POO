@@ -1,5 +1,7 @@
 /**
  * Classe para a gestao de uma frutaria
+ * @author Joás Sila e Diogo Silva
+ * @version 3.14
  */
 public class Frutaria extends Mercearia {
     /**

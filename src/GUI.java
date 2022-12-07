@@ -6,14 +6,36 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.TimerTask;
 
+/**
+ * Classe para a gestao dos elementos da Interface Grafica
+ * @author Joás Sila e Diogo Silva
+ * @version 3.14
+ */
 public class GUI extends JFrame {
+    /**
+     * Classe StarThrive com as empresas a serem geridas.
+     */
     private StarThrive st;
+    /**
+     * Array bi-dimensional de paineis para preencher o Frame de Adicionar/Editar
+     * (nao e possivel adicionar um elemento especifico a uma celula do gridLayout, entao
+     * adicionam-se varios panels vazios para serem preenchidos com os elementos).
+     */
     private JPanel[][] panelHolder;
+    /**
+     * Frame para Adicionar/Editar uma empresa
+     */
     private JFrame frameAdicionarEditar;
+    /**
+     * Inteiro que diz qual a categoria da empresa a ser adicionada/editada
+     */
     private int tipoEmpresa;
+    /**
+     * ComboBox com os tipos de empresas
+     */
     private JComboBox<String> comboBoxTipo;
     /**
-     * Botões para Adicionar, Remover
+     * Botões para Adicionar, Remover, Ponto Dois, Ponto Tres, Adicionar/Editar, Cancelar
      */
     private JButton adicionar, remover, editar, pontoDois, pontoTres, adicionarEditar, cancelar;
     /**
@@ -32,10 +54,21 @@ public class GUI extends JFrame {
      * Text field para as variaveis comuns a um Mercado e a uma Frutaria
      */
     private JTextField custoAnualLimpezaEstabelecimento, numProdutos, valMedFaturacaoAnualProduto, tipo, areaCorredores, valMedFaturacaoAnualMetro2;
+    /**
+     * ListModel com os nomes das empresas da classe StarThrive
+     */
     private DefaultListModel<String> valoresLista;
+    /**
+     * Lista com os nomes das empresas
+     */
     private JList<String> lista;
 
+    /**
+     * Construtor da Classe GUI
+     * @param st Objeto da classe StarThrive a ser gerida
+     */
     public GUI(StarThrive st) {
+        // Adicionar a StarThrive e Definir o JFrame principal
         this.st = st;
         setTitle("StarThrive");
         setSize(1920, 1080);
@@ -43,7 +76,7 @@ public class GUI extends JFrame {
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
+        // Criar o Painel de empresas e preencher com as empresas da StarThrive
         JPanel painelEmpresas = new JPanel();
         valoresLista = new DefaultListModel<>();
         for (Empresa e : st.getEmpresas())
@@ -57,6 +90,7 @@ public class GUI extends JFrame {
         listScroller.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         painelEmpresas.add(listScroller);
 
+        // Criar o Painel de Botoes e adicionar os Botoes de Adicionar/Remover/Editar/Ponto 2/Ponto 3
         JPanel painelBotoes = new JPanel();
         painelBotoes.setLayout(new GridLayout(1, 5, 20, 60));
         ButtonListener buttonListener = new ButtonListener();
@@ -76,15 +110,20 @@ public class GUI extends JFrame {
         painelBotoes.add(pontoDois);
         painelBotoes.add(pontoTres);
 
+        //Adicionar os paineis a JFrame Principal
         add(painelEmpresas);
         add(painelBotoes);
+
+        //Criar e adicionar um MouseListener a Lista que verifica quando
+        //e feito um double click, mostra as informacoes da empresa selecionada
+        //(caso a lista de empresas nao esteja vazia)
         lista.addMouseListener(new MouseAdapter() {
             private int contador = 0;
             java.util.Timer timer = new java.util.Timer(false);
 
 
             @Override
-            public void mouseClicked(final MouseEvent e) {
+            public void mouseClicked(MouseEvent e) {
                 contador = e.getClickCount();
                 if (e.getClickCount() == 1) {
                     timer.schedule(new TimerTask() {
@@ -102,9 +141,15 @@ public class GUI extends JFrame {
         show();
     }
 
+    /**
+     * InnerClass para implementar o ActionListener de um botao
+     */
     private class ButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            //Caso o botao clicado seja o Adicionar, cria o JFrame para Adicionar uma empresa
+            //e desabilita o Frame principal (para nao poder interagir com o frame ao adicionar
+            //mesmo o Frame de adicionar sendo "AlwaysOnTop")
             if (e.getSource() == adicionar) {
                 adicionarOuEditar(false);
                 frameAdicionarEditar.show();
@@ -115,6 +160,9 @@ public class GUI extends JFrame {
                 longitude.setText("");
                 enable(false);
 
+            //Caso o botao clicado seja o Remover, verifica se a lista nao esta vazia e se
+            //alguma empresa esteja selecionada, caso ambos se verifiquem, mostra um painel
+            //para confirmar se deseja excluir a empresa selecionada
             } else if (e.getSource() == remover) {
                 if (valoresLista.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Não existem empresas para remover!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -127,6 +175,11 @@ public class GUI extends JFrame {
                         valoresLista.remove(lista.getSelectedIndex());
                     }
                 }
+
+            //Caso o botao clicado seja o Editar, verifica se a lista nao esta vazia e se
+            //alguma empresa esteja selecionada, caso ambos se verifiquem, cria um Frame com as
+            //caracteristicas da Empresa selecionada e com os JTextField's preenchidos com as
+            //informacoes da empresa
             } else if (e.getSource() == editar) {
                 if (valoresLista.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Não existem empresas para editar!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -214,16 +267,20 @@ public class GUI extends JFrame {
                     frameAdicionarEditar.show();
                 }
 
+            //Caso o botao clicado seja o PontoDois, verifica se a lista de empresas esta vazia,
+            //caso nao esteja, apresenta para cada tipo de empresa, a empresa com maior receita anual (nome e
+            //valor), a empresa com menor despesa anual (nome e valor) e a empresa com maior lucro anual
+            //(nome e valor do lucro).
             } else if (e.getSource() == pontoDois) {
                 if (valoresLista.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Não existem empresas para mostrar!", "Erro", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    /*for (String s : st.receitaDespesaLucro()) {
-                        JOptionPane.showMessageDialog(null, s, "Ponto Dois", JOptionPane.PLAIN_MESSAGE);
-                    }*/
                     JOptionPane.showMessageDialog(null, st.receitaDespesaLucro(), "Ponto Dois", JOptionPane.PLAIN_MESSAGE);
                 }
 
+            //Caso o botao clicado seja o PontoTres, verifica se a lista de empresas esta vazia e se
+            //ha no minimo 2 empresas da area da restauracao, caso sim, mostra 2 Pop-ups com as 2 empresas
+            //da area da restauracao com maior capacidade de clientes por dia
             } else if (e.getSource() == pontoTres) {
                 if (valoresLista.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Não existem empresas para mostrar!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -234,6 +291,12 @@ public class GUI extends JFrame {
                     JOptionPane.showMessageDialog(null,"Com 2ª maior capacidade de clientes por dia:\n" + st.maiorCapacidadeClientes()[0], "Empresa do tipo \"Restauração\"", JOptionPane.PLAIN_MESSAGE);
 
                 }
+
+            //Caso o botao clicado seja o de Adicionar/Editar (da JFrame AdicionarEditar), verifica se
+            //o painel na linha 0 coluna 2 possui algum componente, caso sim (JComboBox) le e verifica os parametros
+            //inseridos, adiciona uma empresa a lista e atualiza o ficheiro.
+            //Caso contrario, le e verifica os parametros introduzidos e edita na lista a empresa selecionada
+            //e depois adiciona ao ficheiro
             } else if (e.getSource() == adicionarEditar) {
                 try {
                     if (panelHolder[0][2].getComponents().length != 0){
@@ -324,6 +387,9 @@ public class GUI extends JFrame {
                 frameAdicionarEditar.dispose();
                 enable(true);
                 show();
+
+            //Caso o botao clicado seja o de cancelar (da JFrame AdicionarEditar), fecha a Frame de Adicionar/Editar
+            //e volta a habilitar a Frame principal
             } else if (e.getSource() == cancelar) {
                 frameAdicionarEditar.dispose();
                 enable(true);
@@ -332,6 +398,9 @@ public class GUI extends JFrame {
         }
     }
 
+    /**
+     * InnerClass para implementar o ActionListener de uma ComboBox
+     */
     private class ComboBoxActionListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -361,6 +430,13 @@ public class GUI extends JFrame {
             }
         }
     }
+
+    /**
+     * Metodo para criar e exibir uma JFrame para adicionar/editar uma empresa
+     * @param editar Boolean para escolher se a JFrame sera para adicionar ou editar uma empresa
+     *               caso seja True, a JFrame criada tera as opcoes para editar uma empresa
+     *               caso contrario ira criar as opcoes para adicionar uma empresa.
+     */
     private void adicionarOuEditar(boolean editar){
         frameAdicionarEditar = new JFrame();
         ButtonListener buttonListener = new ButtonListener();
@@ -412,6 +488,9 @@ public class GUI extends JFrame {
         panelHolder[5][5].add(cancelar);
     }
 
+    /**
+     * Metodo para limpar os paines da JFrame de Adicionar empresas
+     */
     private void removerElementos() {
         for (int i = 2; i < 6; ++i) {
             panelHolder[2][i].removeAll(); // Remove a 3 linha toda (menos a longitude)
@@ -433,6 +512,10 @@ public class GUI extends JFrame {
         panelHolder[5][1].repaint();
     }
 
+    /**
+     * Metodo para adicionar as JTextFields e Labels com as caracteristicas
+     * de uma empresa da area da restauracao
+     */
     private void restauracao() {
         adicionarEditar.setEnabled(true);
         removerElementos();
@@ -450,6 +533,10 @@ public class GUI extends JFrame {
         panelHolder[3][3].add(custoSalarioMedioAnual);
     }
 
+    /**
+     * Metodo para adicionar as JTextFields e Labels com as caracteristicas
+     * de uma empresa que e um restaurante
+     */
     private void restaurante() {
         panelHolder[3][4].add(new JLabel("Valor médio de faturação"));
         panelHolder[3][4].add(new JLabel("de cada mesa por dia:"));
@@ -464,6 +551,10 @@ public class GUI extends JFrame {
         panelHolder[4][3].add(numMesasInteriores);
     }
 
+    /**
+     * Metodo para adicionar as JTextFields e Labels com as caracteristicas
+     * de uma empresa que e uma mercearia
+     */
     private void mercearia() {
         adicionarEditar.setEnabled(true);
         removerElementos();
@@ -472,6 +563,10 @@ public class GUI extends JFrame {
         custoAnualLimpezaEstabelecimento = new JTextField(15);
         panelHolder[2][3].add(custoAnualLimpezaEstabelecimento);
     }
+    /**
+     * Metodo para adicionar as JTextFields e Labels com as caracteristicas
+     * de uma empresa que e um Cafe
+     */
     private void cafe(){
         restauracao();
         panelHolder[3][4].add(new JLabel("Número médio de cafés vendidos"));
@@ -483,6 +578,10 @@ public class GUI extends JFrame {
         valMedFaturacaoAnualCafeVendidoDia = new JTextField(15);
         panelHolder[4][1].add(valMedFaturacaoAnualCafeVendidoDia);
     }
+    /**
+     * Metodo para adicionar as JTextFields e Labels com as caracteristicas
+     * de uma empresa que e uma Pastelaria
+     */
     private void pastelaria(){
         restauracao();
         panelHolder[3][4].add(new JLabel("Número médio de bolos vendidos"));
@@ -494,6 +593,11 @@ public class GUI extends JFrame {
         valMedFaturacaoAnualBoloVendidoDia = new JTextField(15);
         panelHolder[4][1].add(valMedFaturacaoAnualBoloVendidoDia);
     }
+
+    /**
+     * Metodo para adicionar as JTextFields e Labels com as caracteristicas
+     * de uma empresa que e uma Restaurante Local
+     */
     private void restauranteLocal(){
         restauracao();
         restaurante();
@@ -505,6 +609,11 @@ public class GUI extends JFrame {
         custoLicencaAnualMesaEsplanada = new JTextField(15);
         panelHolder[5][1].add(custoLicencaAnualMesaEsplanada);
     }
+
+    /**
+     * Metodo para adicionar as JTextFields e Labels com as caracteristicas
+     * de uma empresa que e um Restaurante Fast-food
+     */
     private void restauranteFastFood(){
         restauracao();
         restaurante();
@@ -517,6 +626,11 @@ public class GUI extends JFrame {
         valMedioFaturacaoClienteDriveThru = new JTextField(15);
         panelHolder[5][1].add(valMedioFaturacaoClienteDriveThru);
     }
+
+    /**
+     * Metodo para adicionar as JTextFields e Labels com as caracteristicas
+     * de uma empresa que e uma Frutaria
+     */
     private void frutaria(){
         mercearia();
         panelHolder[2][4].add(new JLabel("Número de produtos:"));
@@ -527,6 +641,11 @@ public class GUI extends JFrame {
         valMedFaturacaoAnualProduto = new JTextField(15);
         panelHolder[3][1].add(valMedFaturacaoAnualProduto);
     }
+
+    /**
+     * Metodo para adicionar as JTextFields e Labels com as caracteristicas
+     * de uma empresa que e um Mercado
+     */
     private void mercado(){
         mercearia();
         panelHolder[2][4].add(new JLabel("Tipo:"));
@@ -540,6 +659,12 @@ public class GUI extends JFrame {
         valMedFaturacaoAnualMetro2 = new JTextField(15);
         panelHolder[3][3].add(valMedFaturacaoAnualMetro2);
     }
+
+    /**
+     * Metodo utilizado ao editar uma empresa para preencher o Nome, Distrito e Localizacao
+     * nos JTextField's
+     * @param e Empresa a ser editada
+     */
     private void preencherEditarEmpresa(Empresa e){
         nome.setText(e.getNome());
         distrito.setText(e.getDistrito());

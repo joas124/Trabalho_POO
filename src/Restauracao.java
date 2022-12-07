@@ -1,5 +1,7 @@
 /**
  * Classe para a gestao de uma empresa da area da Restauracao
+ * @author Joás Sila e Diogo Silva
+ * @version 3.14
  */
 public abstract class Restauracao extends Empresa{
     /**
@@ -117,8 +119,10 @@ public abstract class Restauracao extends Empresa{
     }
 
     /**
-     * Metodo para obter a capacidade num servico de restauracao
-     * @return double com o numero medio de clientes diario
+     * Método abstrato para apresentar (em uma empresa da area da restauracao)
+     * a maior capacidade de clientes por dia.
+     * @return Um double com a maior capacidade de clientes por dia (caso a empresa seja da
+     * area da restauracao), 0 caso contrario
      */
     @Override
     public double capacidadeRestauracao() {

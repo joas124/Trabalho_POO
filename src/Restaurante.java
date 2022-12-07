@@ -1,5 +1,7 @@
 /**
  * Classe para a gestao de um restaurante
+ * @author Joás Sila e Diogo Silva
+ * @version 3.14
  */
 public abstract class Restaurante extends Restauracao {
     /**

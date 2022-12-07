@@ -1,5 +1,7 @@
 /**
  * Classe para a gestao de uma empresa da area da Mercearia
+ * @author Joás Sila e Diogo Silva
+ * @version 3.14
  */
 public abstract class Mercearia extends Empresa{
     /**
@@ -15,6 +17,7 @@ public abstract class Mercearia extends Empresa{
     /**
      * Construtor da classe Mercearia
      * @param nome String com o nome da empresa de Mercearia
+     * @param categoria String com a categoria da empresa
      * @param distrito String com o distrito onde a empresa esta localizada
      * @param localizacao Objeto GPS com as coordenadas da localizacao da empresa
      * @param custoAnualLimpezaEstabelecimento custo anual da limpeza do estabelecimento
@@ -50,8 +53,10 @@ public abstract class Mercearia extends Empresa{
     }
 
     /**
-     * Metodo auxiliar para a pergunta 3
-     * @return double com a capacidade de clientes por dia
+     * Método abstrato para apresentar (em uma empresa da area da restauracao)
+     * a maior capacidade de clientes por dia.
+     * @return Um double com a maior capacidade de clientes por dia (caso a empresa seja da
+     * area da restauracao), 0 caso contrario
      */
     @Override
     public double capacidadeRestauracao() {

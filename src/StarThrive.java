@@ -2,25 +2,51 @@ import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 
+/**
+ * Classe para gerir as empresas da StarThrive
+ * @author Joás Sila e Diogo Silva
+ * @version 3.14
+ */
 public class StarThrive implements Serializable{
+    /**
+     * ArrayList com as empresas a serem geridas
+     */
     private ArrayList<Empresa> empresas;
 
+    /**
+     * Construtor default para a classe StarThrive
+     * que aloca memoria para o ArrayList
+     */
     public StarThrive() {
         this.empresas = new ArrayList<>();
     }
 
+    /**
+     * Método para o <i>Main</i>, onde o codigo é executado
+     * @param args Argumentos da linha de comando
+     */
     public static void main(String[] args) {
         StarThrive st = new StarThrive();
         st.lerFicheiro();
         new GUI(st);
         st.escreverFicheiro();
-        st.escreverFicheiroTexto();
+        //st.escreverFicheiroTexto();
     }
 
+    /**
+     * Método para obter o ArrayList de empresas
+     * @return ArrayList com todas as empresas da StarThrive
+     */
     public ArrayList<Empresa> getEmpresas() {
         return empresas;
     }
 
+    /**
+     * Método para ler as empresas do ficheiro
+     * Caso exista o ficheiro "starthrive.dat", le-se as empresas do ficheiro de objetos
+     * Caso contrario, le do ficheiro "starthrive.txt", e caso este nao exista (ou esteja mal formatado)
+     * inicializa o programa com a lista de empresas vazia.
+     */
     public void lerFicheiro(){
         File f = new File("starthrive.dat");
         if(f.isFile() && f.exists()) {
@@ -72,19 +98,44 @@ public class StarThrive implements Serializable{
         }
     }
 
+    /**
+     * Metodo para obter uma empresa pelo seu indice no ArrayList
+     * @param index Indice da empresa no ArrayList
+     * @return Objeto da Empresa
+     */
     public Empresa getEmpresa(int index){
         return empresas.get(index);
     }
+
+    /**
+     * Metodo para adicionar uma empresa na lista de empresas
+     * @param empresa Objeto da empresa a ser adicionada a lista
+     */
     public void adicionarEmpresa(Empresa empresa){
         empresas.add(empresa);
     }
+
+    /**
+     * Metodo para remover uma empresa na lista de empresas
+     * @param empresa Objeto da empresa a ser removida da lista
+     */
     public void removerEmpresa(Empresa empresa){
         empresas.remove(empresa);
     }
+
+    /**
+     * Metodo para substituir uma empresa da lista de empresas
+     * @param empresa Empresa a substituir a empresa da lista
+     * @param index Indice da lista onde a empresa vai ser substituida
+     */
     public void editarEmpresa(Empresa empresa, int index){
         empresas.set(index, empresa);
     }
 
+    /**
+     * Metodo para escrever a lista de empresas em um ficheiro de objetos
+     * "starthrive.dat".
+     */
     public void escreverFicheiro(){
         File ficheiro = new File("starthrive.dat");
         try {
@@ -102,6 +153,12 @@ public class StarThrive implements Serializable{
         }
     }
 
+    /**
+     * Metodo para escrever a lista de empresas em um ficheiro de objetos
+     * "starthrive.dat".
+     * (Este metodo nao e utilizado no programa, mas foi feito para poder ajudar
+     * a criar as 5 empresas de cada categoria).
+     */
     public void escreverFicheiroTexto(){
         File ficheiro = new File("starthrive.txt");
         try {
@@ -121,10 +178,16 @@ public class StarThrive implements Serializable{
         }
     }
 
+    /**
+     * Metodo pedido no ponto 2 para apresentar para cada tipo de empresa, a empresa com maior receita anual (nome e
+     * valor), a empresa com menor despesa anual (nome e valor) e a empresa com maior
+     * lucro anual (nome e valor do lucro).
+     * @return String com as empresas de maior receita anual, menor despesa anual e com maior lucro anual
+     * de cada categoria.
+     */
     public String receitaDespesaLucro(){
         String[] categorias = {"Café", "Pastelaria", "Restaurante Local", "Restaurante Fast-food", "Frutaria", "Mercado"};
-//        ArrayList<String> resultadoCategorias = new ArrayList<>();
-        String teste = "";
+        String resultado = "";
         for(String c: categorias){
             double maiorReceita = 0, menorDespesa = Double.MAX_VALUE, maiorLucro = -menorDespesa;
             String nomeEmpresaReceita = null, nomeEmpresaDespesa = null, nomeEmpresaLucro = null;
@@ -143,12 +206,12 @@ public class StarThrive implements Serializable{
                 }
             }
             if (nomeEmpresaReceita != null && nomeEmpresaDespesa != null && nomeEmpresaLucro != null) {
-                String resultado = "Empresa da categoria: " + c + "\n\n\t•Com maior receita: " + nomeEmpresaReceita + ", " + maiorReceita + "€\n"
+                String categoria = "Empresa da categoria: " + c + "\n\n\t•Com maior receita: " + nomeEmpresaReceita + ", " + maiorReceita + "€\n"
                  + "\t•Com menor despesa: " + nomeEmpresaDespesa + ", " + menorDespesa + "€\n" + "\t•Com maior lucro: " + nomeEmpresaLucro + ", " + maiorLucro + "€\n\n";
-                teste = teste + resultado;
+                resultado = resultado + categoria;
             }
         }
-        return teste;
+        return resultado;
         /*-------------------------------------------------OUTRA MANEIRA-------------------------------------------------*/
         /*String[] categorias = {"Café", "Pastelaria", "Restaurante Local", "Restaurante Fast-food", "Frutaria", "Mercado"};
         for(String c: categorias){
@@ -175,7 +238,17 @@ public class StarThrive implements Serializable{
         }*/
     }
 
+    /**
+     * Metodo pedido no ponto 3 que obtem as 2 empresas do tipo restauracao
+     * com maior capacidade de clientes por dia.
+     * @return Array com as 2 empresas do tipo restauracao com maior capacidade
+     * de clientes por dia (primeiro elemento tem a maior capacidade, segundo tem a segunda menor
+     * capacidade), e caso a lista de empresas nao possua no minimo 2 empresas da area da restauracao
+     * retorna <i>null</i>.
+     */
     public Empresa[] maiorCapacidadeClientes(){
+        //O Array comeca com 2 empresas do tipo Cafe vazias, mas poderia ser qualquer tipo de empresa
+        //vazia para ao correr o codigo da linha 254 nao dar erro de aceder a um objeto null.
         Empresa[] maiores = {new Cafe(), new Cafe()};
         for (Empresa e: empresas){
             if (e.capacidadeRestauracao() > 0){
@@ -187,6 +260,10 @@ public class StarThrive implements Serializable{
                 }
             }
         }
+        //Caso a capacidade de restauracao de um deles esteja a zero, significa que e um dos
+        //cafes que foi criado ao inicializar o Array, o que significa que nao existem no minimo 2
+        //empresas da area da restauracao (pois uma empresa da restauracao nao pode nunca ter a sua
+        //capacidade diaria a zero).
         if (maiores[0].capacidadeRestauracao() != 0 && maiores[1].capacidadeRestauracao() != 0) {
             return maiores;
         }else {
