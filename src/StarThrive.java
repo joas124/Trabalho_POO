@@ -89,8 +89,7 @@ public class StarThrive implements Serializable{
                     JOptionPane.showMessageDialog(null, "Ficheiro inexistente \"starthrive.txt\"", "Erro", JOptionPane.ERROR_MESSAGE);
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, "Erro ao ler o ficheiro!", "Erro", JOptionPane.ERROR_MESSAGE);
-                } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {
-                    System.out.println(ex);
+                } catch (NumberFormatException | ArrayIndexOutOfBoundsException ex) {;
                     JOptionPane.showMessageDialog(null, "Ficheiro \"starthrive.txt\" mal formatado!", "Erro", JOptionPane.ERROR_MESSAGE);
                     empresas = new ArrayList<>();
                 }
