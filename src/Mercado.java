@@ -1,6 +1,6 @@
 /**
  * Classe para a gestao de um mercado
- * @author Joás Sila e Diogo Silva
+ * @author Joás Silva e Diogo Silva
  * @version 3.14
  */
 public class Mercado extends Mercearia {

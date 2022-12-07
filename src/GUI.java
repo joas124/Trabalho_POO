@@ -8,7 +8,7 @@ import java.util.TimerTask;
 
 /**
  * Classe para a gestao dos elementos da Interface Grafica
- * @author Joás Sila e Diogo Silva
+ * @author Joás Silva e Diogo Silva
  * @version 3.14
  */
 public class GUI extends JFrame {
@@ -288,7 +288,7 @@ public class GUI extends JFrame {
                     JOptionPane.showMessageDialog(null, "Não existem no mínimo 2 empresas da área da restauração para mostrar!", "Erro", JOptionPane.ERROR_MESSAGE);
                 } else {
                     JOptionPane.showMessageDialog(null,"Com maior capacidade de clientes por dia:\n" + st.maiorCapacidadeClientes()[0], "Empresa do tipo \"Restauração\"", JOptionPane.PLAIN_MESSAGE);
-                    JOptionPane.showMessageDialog(null,"Com 2ª maior capacidade de clientes por dia:\n" + st.maiorCapacidadeClientes()[0], "Empresa do tipo \"Restauração\"", JOptionPane.PLAIN_MESSAGE);
+                    JOptionPane.showMessageDialog(null,"Com 2ª maior capacidade de clientes por dia:\n" + st.maiorCapacidadeClientes()[1], "Empresa do tipo \"Restauração\"", JOptionPane.PLAIN_MESSAGE);
 
                 }
 

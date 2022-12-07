@@ -1,6 +1,6 @@
 /**
  * Classe para a gestao de uma empresa da area da Restauracao
- * @author Joás Sila e Diogo Silva
+ * @author Joás Silva e Diogo Silva
  * @version 3.14
  */
 public abstract class Restauracao extends Empresa{
@@ -150,7 +150,7 @@ public abstract class Restauracao extends Empresa{
      */
     @Override
     public String toStringFicheiro() {
-        return super.toStringFicheiro() + numMedClientesDiario + ',' + numEmpregadosMesa + ',' +
+        return super.toStringFicheiro() + numEmpregadosMesa + ',' + numMedClientesDiario + ',' +
                 custoEmpregadosMesa + ',' + custoSalarioMedioAnual + ',';
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Classe para gerir as empresas da StarThrive
- * @author Joás Sila e Diogo Silva
+ * @author Joás Silva e Diogo Silva
  * @version 3.14
  */
 public class StarThrive implements Serializable{
@@ -29,8 +29,8 @@ public class StarThrive implements Serializable{
         StarThrive st = new StarThrive();
         st.lerFicheiro();
         new GUI(st);
-        st.escreverFicheiro();
-        //st.escreverFicheiroTexto();
+        //st.escreverFicheiro();
+        st.escreverFicheiroTexto();
     }
 
     /**

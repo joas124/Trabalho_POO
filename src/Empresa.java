@@ -2,7 +2,7 @@ import java.io.Serializable;
 
 /**
  * Classe para a gestão de uma Empresa
- * @author Joás Sila e Diogo Silva
+ * @author Joás Silva e Diogo Silva
  * @version 3.14
  */
 public abstract class Empresa implements Serializable {
