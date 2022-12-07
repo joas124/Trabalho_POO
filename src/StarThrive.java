@@ -211,30 +211,6 @@ public class StarThrive implements Serializable{
             }
         }
         return resultado;
-        /*-------------------------------------------------OUTRA MANEIRA-------------------------------------------------*/
-        /*String[] categorias = {"Café", "Pastelaria", "Restaurante Local", "Restaurante Fast-food", "Frutaria", "Mercado"};
-        for(String c: categorias){
-            double maiorReceita = 0, menorDespesa = Double.MAX_VALUE, maiorLucro = 0;
-            String nomeEmpresaReceita = null, nomeEmpresaDespesa = null, nomeEmpresaLucro = "NENHUMA";
-            for(Empresa e: empresas){
-                if(c.equals(e.categoria) && e.defReceitaAnual()>maiorReceita){
-                    maiorReceita = e.defReceitaAnual();
-                    nomeEmpresaReceita = e.nome;
-                }if (c.equals(e.categoria) && e.defDespesaAnual()<menorDespesa){
-                    menorDespesa = e.defDespesaAnual();
-                    nomeEmpresaDespesa = e.nome;
-                }if (c.equals(e.categoria) && e.lucro() && e.defReceitaAnual()-e.defDespesaAnual() > maiorLucro){
-                    maiorLucro = e.defReceitaAnual()-e.defDespesaAnual();
-                    nomeEmpresaLucro = e.nome;
-                }
-            }
-            if (nomeEmpresaReceita != null && nomeEmpresaDespesa != null) {
-                System.out.println("Empresa da categoria " + c);
-                System.out.println("\tCom maior receita: " + nomeEmpresaReceita + ", " + maiorReceita + "€");
-                System.out.println("\tCom menor despesa: " + nomeEmpresaDespesa + ", " + menorDespesa + "€");
-                System.out.println("\tCom maior lucro: " + nomeEmpresaLucro + ", " + maiorLucro + "€");
-            }
-        }*/
     }
 
     /**
