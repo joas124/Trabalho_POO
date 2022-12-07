@@ -29,8 +29,8 @@ public class StarThrive implements Serializable{
         StarThrive st = new StarThrive();
         st.lerFicheiro();
         new GUI(st);
-        //st.escreverFicheiro();
-        st.escreverFicheiroTexto();
+        st.escreverFicheiro();
+        //st.escreverFicheiroTexto(); -> Deu jeito para escrever o .txt
     }
 
     /**
